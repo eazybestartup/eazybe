@@ -1,0 +1,4 @@
+const LOGIN_SUCCESS = 1;
+const LOGIN_ERROR = 2;
+
+export { LOGIN_SUCCESS, LOGIN_ERROR };
