@@ -18,7 +18,7 @@ class UsersController < ApplicationController
    
     def create
       @user = User.new(user_params)
-      @user.created_by_id = @current_user[:id]
+      # @user.created_by_id = @current_user[:id]
    
       if @user.save
 	      render json: {
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
     def update
     	@user = ResourceFile.find(params[:id])
-    	@user.last_modified_by_id = @current_user[:id]
+    	# @user.last_modified_by_id = @current_user[:id]
 
 	    if @user.update_attributes(user_params)
 	      render json: {
@@ -66,7 +66,13 @@ class UsersController < ApplicationController
 		      	errors: 'user not found'
 		    }.to_json
     	end
-    end
+		end
+		
+		private
+
+		def user_params
+			params.require(:user).permit(:name, :last_name, :email, :password, :birth_date)
+		end
 
 
 end
