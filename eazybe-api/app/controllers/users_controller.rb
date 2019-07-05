@@ -1,6 +1,7 @@
 require 'json'
 class UsersController < ApplicationController
-		skip_before_action :authenticate_request
+		# skip_before_action :authenticate_request
+		skip_before_action :authenticate_request, only: [:create, :index]
 		wrap_parameters :user, include: [:name, :full_name, :email, :password, :password_confirmation, :birth_date, :gender, :cep, :street, :number, :district, :complement, :city]
 
     def show
