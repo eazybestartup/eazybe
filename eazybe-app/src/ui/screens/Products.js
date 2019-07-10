@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
-import ListItem from '../ui/components/cart/ListItem/ListItem';
+import ListItem from '../components/cart/ListItem/ListItem';
 
 class Products extends React.Component {
   state = {

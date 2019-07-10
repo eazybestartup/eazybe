@@ -14,6 +14,11 @@ const sumAllProp = (array, prop) => {
 }
 
 class Cart extends Component {
+
+  static navigationOptions = {
+    title: 'Cart',
+    headerTitleStyle: {alignSelf: 'center'},
+  };
   
   componentDidMount() {
     this.props.initialPrice();
