@@ -17,7 +17,7 @@ class Cart extends Component {
 
   static navigationOptions = {
     title: 'Cart',
-    headerTitleStyle: {alignSelf: 'center'},
+    headerTitleStyle: { alignSelf: 'center' },
   };
   
   componentDidMount() {
