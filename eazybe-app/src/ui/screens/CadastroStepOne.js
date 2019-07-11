@@ -20,10 +20,10 @@ export default class CadastroStepOne extends Component {
         <Content>
           <Form>
             <Item>
-              <Input placeholder="Username" />
+              <Input placeholder="LALALALALA" />
             </Item>
             <Item last>
-              <Input placeholder="Password" />
+              <Input placeholder="EEEEEEE" />
             </Item>
           </Form>
         </Content>
