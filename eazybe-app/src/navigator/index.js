@@ -3,13 +3,17 @@ import Cart from '../ui/screens/Cart';
 import Products from '../ui/screens/Products';
 import CadastroStepOne from '../ui/screens/CadastroStepOne';
 import Login from '../ui/screens/Login';
+import Cadastro1 from '../ui/screens/Cadastro1'
+import Feed from '../ui/screens/Feed'
 
 const AppNavigator = createStackNavigator(
 {
   Products,
   Cart,
   CadastroStepOne,
-  Login
+  Login,
+  Cadastro1,
+  Feed
 },
 {
   initialRouteName: 'Login',
