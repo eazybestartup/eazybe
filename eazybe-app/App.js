@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { createStore, compose } from 'redux';
 import Reactotron from 'reactotron-react-native';
 import { reactotronRedux } from 'reactotron-redux';
+import moment from 'moment';
 import Navigator from './src/navigator/index';
 
 import rootReducer from './src/state/main';
@@ -15,6 +16,7 @@ if (__DEV__) {
     .connect() // let's connect!
 }
 
+moment().locale('pt-br')
 
 export default class App extends React.Component {
   render() {
