@@ -20,8 +20,8 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.white,
   },
-  vwPicker: { color: colors.white, borderWidth: 1, borderColor: colors.white, marginRight: 10 },
-  picker: { color: colors.purpleBackground, borderWidth: 1, borderColor: colors.white, backgroundColor: colors.white },
+  vwPicker: { marginRight: 15, flexDirection: 'row', flex:1, alignItems: 'center', textAlign:'center', backgroundColor: colors.white, paddingRight: 5 },
+  picker: { color: colors.purpleBackground, backgroundColor: colors.white, flex: 1, zIndex:1 },
   shadow: {
     shadowColor: colors.black,
     shadowOffset: {

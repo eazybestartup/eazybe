@@ -18,6 +18,11 @@ export const styles = StyleSheet.create({
     flex:1,
     backgroundColor: colors.white,
     width: '100%',
+    flexDirection: 'row',
+    alignContent: 'center',
+    alignItems: 'center',
+    textAlign:'center',
+    paddingLeft: 5,
   },
   shadow: {
     shadowColor: colors.black,

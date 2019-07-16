@@ -5,8 +5,6 @@ import Reactotron from 'reactotron-react-native';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import InputWithLabel from '../../ui/components/register/InputWithLabel/InputWithLabel';
-import EazyBeDatePicker from '../../ui/components/register/EazyBeDatePicker/EazyBeDatePicker';
-import EazyBePicker from '../../ui/components/register/EazyBePicker/EazyBePicker';
 import colors from '../colors/colors.enum'
 import getText from '../../enums/dictionary/dictionary';
 import {
@@ -18,6 +16,7 @@ import {
 } from '../../state/register/register.actions';
 import { urls } from '../../services/_base/urls';
 import UserAddress from '../../models/UserAddress'
+import reactotron from 'reactotron-react-native';
 
 const styles = StyleSheet.create({
   container: { backgroundColor: colors.purpleBackground },
@@ -38,7 +37,8 @@ class RegisterStepTwo extends Component {
   }
 
   static navigationOptions = {
-    title: getText('register:title:navigation:stepOne')
+    title: getText('register:title:navigation:stepOne'),
+    headerTitleStyle: { alignSelf: 'center', justifyContent: 'center' },
   }
 
   setCepAndCallApi(cep) {
@@ -51,7 +51,7 @@ class RegisterStepTwo extends Component {
   }
 
   callApi = cep => {
-    const { register, setCep, setLoading, setUserAddress, setErrorMessage, setInvalidCep } = this.props;
+    const { register, setLoading, setUserAddress, setErrorMessage, setInvalidCep } = this.props;
     setLoading(true);
     const url = urls.cep.replace('#cep', cep);
     axios.get(url).then(res => {
@@ -160,7 +160,7 @@ class RegisterStepTwo extends Component {
 }
 
 const mapState = state => {
-  Reactotron.log(state)
+  reactotron.log(state)
   return { register: state.registerReducer }
 }
 

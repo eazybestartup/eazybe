@@ -13,14 +13,14 @@ const AppNavigator = createStackNavigator(
   RegisterStepTwoConnected,
 },
 {
-  initialRouteName: 'RegisterStepTwoConnected',
+  initialRouteName: 'RegisterStepOneConnected',
   defaultNavigationOptions: {
     headerStyle: {
       backgroundColor: colors.navyBlue,
       textAlign: 'center',
     },
     headerTintColor: colors.white,
-    headerTitleStyle: { textAlign:'center', alignSelf:'center',flex:1 }
+    headerTitleStyle: { textAlign:'center', alignSelf:'center', flex:1, }
   }
 }
 );

@@ -56,7 +56,7 @@ class RegisterStepOne extends Component {
     
     if(emailValid && isPasswordEquals && isPasswordBigEnough && isNameBigEnough && birthDate && userSex) {
       this.props.setErrorMessage('');
-      return this.props.navigation.navigate('RegisterStepTwo');
+      return this.props.navigation.navigate('RegisterStepTwoConnected');
     }
 
     if(!birthDate) {

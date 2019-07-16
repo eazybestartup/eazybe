@@ -12,11 +12,11 @@ import {
   SET_INVALID_CEP,
 } from './register.actionTypes';
 import Reactotron from 'reactotron-react-native'
-
+const sexOptions = ['Masculino', 'Feminino', 'Não binário']
 const INITIAL_STATE = {
   name: '',
   birthDate: new Date(2019, 0, 1),
-  userSex: 'Masculino',
+  userSex: sexOptions[0],
   email: '',
   password: '',
   confirmationPassword: '',
@@ -30,7 +30,7 @@ const INITIAL_STATE = {
     uf: '',
   },
   errorMessage: '',
-  sexOptions: ['Masculino', 'Feminino', 'Não binário'],
+  sexOptions,
   loading: false,
   invalidCep: true,
 };
