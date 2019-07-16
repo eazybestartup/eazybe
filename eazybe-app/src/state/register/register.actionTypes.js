@@ -1,0 +1,29 @@
+/*
+  Tipos de actions que podemos disparar. É só criar uma constante, atribuir em uma string e exportar.
+*/
+
+const SET_NAME = 'SET_NAME';
+const SET_BIRTH_DATE = 'SET_BIRTH_DATE';
+const SET_SEX = 'SET_SEX';
+const SET_EMAIL = 'SET_EMAIL';
+const SET_PASSWORD = 'SET_PASSWORD';
+const SET_CONFIRMATION_PASSWORD = 'SET_CONFIRMATION_PASSWORD';
+const SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE'
+const SET_CEP = 'SET_CEP';
+const SET_ADDRESS = 'SET_ADDRESS';
+const SET_LOADING = 'SET_LOADING'
+const SET_INVALID_CEP = 'SET_INVALID_CEP'
+
+export {
+  SET_NAME,
+  SET_BIRTH_DATE,
+  SET_SEX,
+  SET_EMAIL,
+  SET_PASSWORD,
+  SET_CONFIRMATION_PASSWORD,
+  SET_CEP,
+  SET_ADDRESS,
+  SET_ERROR_MESSAGE,
+  SET_LOADING,
+  SET_INVALID_CEP
+};

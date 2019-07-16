@@ -5,25 +5,26 @@ import CadastroStepOne from '../ui/screens/CadastroStepOne';
 import Login from '../ui/screens/Login';
 import Cadastro1 from '../ui/screens/Cadastro1'
 import Feed from '../ui/screens/Feed'
+import { RegisterStepOneConnected } from '../ui/screens/RegisterStepOne';
+import { RegisterStepTwoConnected } from '../ui/screens/RegisterStepTwo';
+import colors from '../ui/colors/colors.enum';
 
 const AppNavigator = createStackNavigator(
 {
   Products,
   Cart,
-  CadastroStepOne,
-  Login,
-  Cadastro1,
-  Feed
+  RegisterStepOneConnected,
+  RegisterStepTwoConnected,
 },
 {
-  initialRouteName: 'Login',
+  initialRouteName: 'RegisterStepOneConnected',
   defaultNavigationOptions: {
     headerStyle: {
-      backgroundColor: '#40476D',
+      backgroundColor: colors.navyBlue,
       textAlign: 'center',
     },
-    headerTintColor: '#FFF',
-    headerTitleStyle: {textAlign:'center', alignSelf:'center',flex:1}
+    headerTintColor: colors.white,
+    headerTitleStyle: { textAlign:'center', alignSelf:'center', flex:1, }
   }
 }
 );
