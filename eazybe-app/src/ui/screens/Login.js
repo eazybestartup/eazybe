@@ -1,92 +1,111 @@
 import React, { Component } from 'react';
 import {View, Text, StyleSheet, ImageBackground} from 'react-native';
-import { Container, Content, Form, Item, Input, Button } from 'native-base';
+import { Container, Content, Button } from 'native-base';
+import InputWithLabel from '../components/register/InputWithLabel/InputWithLabel';
+import ErrorMessage from '../../ui/components/register/ErrorMessage/ErrorMessage';
+import colors from '../colors/colors.enum';
+import getText from '../../enums/dictionary/dictionary';
+import { connect } from 'react-redux';
 
 export default class Login extends Component{
     constructor(props){
         super(props);
         this.state = {
-
         };
+        this.navigateToFeed = this.navigateToFeed.bind(this);
     }
     static navigationOptions = {
-        title: 'Login',
         header: null
     }
+    navigateToFeed = () => {
+        return this.props.navigation.navigate('FeedConnected')
+    }
+
     render(){
+        const { register } = this.props;
         return(
-            <View style={styles.Area}>
-                <Text style = {styles.textoLogo1}>Eazybe</Text>
-                <Text style = {styles.textoLogo2}>O seu bairro em um toque</Text>
-                <ImageBackground source={require('../../assets/Login/logotipo.png')} style={styles.bgImagem}></ImageBackground>
-                <View style={styles.loginArea}>
-                    <Item style={styles.EmailPass}>
-                        <Input placeholder= "E-mail" placeholderTextColor='#FFFFFF'/>
-                    </Item>
-                    <Item style={styles.EmailPass}>
-                        <Input placeholder="Password" placeholderTextColor='#FFFFFF'/>
-                    </Item>
-                    <Button style={styles.bntLogin} success onPress={() => this.props.navigation.navigate('Feed')}>
-                        <Text style={styles.txtLogin}>Login</Text>
-                    </Button>
-                    <Button style={styles.bntCadastrar} success onPress={() => this.props.navigation.navigate('Cadastro1')}>
-                        <Text style={styles.txtCadastrar}>Cadastre-se</Text>
-                    </Button>
-                </View>
-            </View>
+            <Container style={styles.container}>
+                <Content>
+                    <View>
+                       <Text style = {styles.textoLogo1}>Eazybe</Text>
+                    </View>
+                    <View>
+                        <Text style = {styles.textoLogo2}>O seu bairro em um toque</Text>
+                    </View>
+                    <ImageBackground source={require('../../assets/Login/logotipo.png')} style={styles.bgImagem}></ImageBackground>
+                    <View style = {styles.flex2}>
+                        <InputWithLabel label='register:label:email' placeholder='register:placeholder:email'/>
+                        <InputWithLabel label='register:label:password' placeholder='register:placeholder:password'/>
+                        <View style = {styles.flex3}>
+                            <Text style={styles.errorMessage}></Text>
+                            <Button style={styles.alignSelfCenter1} success onPress={this.navigateToFeed}>
+                                <Text style={styles.txtLogin}>{getText('register:btn:login')}</Text>
+                            </Button>
+                            <Button style={styles.alignSelfCenter2} success onPress={() => this.props.navigation.navigate('RegisterStepOneConnected')}>
+                                <Text style={styles.txtCadastrar} >{getText('register:btn:cadastre-se')}</Text>
+                            </Button>
+                        </View>    
+                    </View>
+                </Content>
+            </Container>
         );
     }
 }
 const styles = StyleSheet.create({
-    Area:{
-        flex: 1,
-        backgroundColor: "#7669C8",
-        height: 300
+    container: { 
+        flex:1, 
+        backgroundColor: colors.purpleBackground 
     },
-    textoLogo1:{
-        fontSize: 48,
-        color: "#FFFFFF",
-        marginTop: 15,
-        textAlign:'center'
-    },
-    textoLogo2:{
-        fontSize: 20,
-        color: "#C4C4C4",
-        marginTop: 2,
-        textAlign:'center'
-    },
-    loginArea:{
-        flex: 1,
+    vwPickers: { flexDirection: 'row' },
+    flex2: { 
+        flex: 2,
+        paddingLeft: 25,
         backgroundColor: "#7A6FBC",
-        marginTop: 80,
+        marginTop: 20,
         elevation: 10,
         borderWidth: 2,
         borderColor: "#8276CA",
-        borderRadius: 6,
-        alignItems: 'center'
-    },
-    EmailPass:{
+        borderRadius: 6 },
+    flex3: { flex: 3 },
+    alignSelfCenter1: { 
+        alignSelf:'center', 
+        width: 200, 
+        height: 50,
+        backgroundColor: colors.white,
+        marginTop: 20,
+     },
+     alignSelfCenter2: { 
+        alignSelf:'center', 
+        width: 200, 
+        height: 50,
+        backgroundColor: colors.navyBlue,
         marginTop: 10,
-        marginEnd: 40,
-        marginLeft: 40,
-        borderColor: "#A29AD0",
-        borderRightColor: "#000000",
+        marginBottom:25
+     },
+    errorMessage: {
+      color: colors.yellow,
+      fontWeight: 'bold',
+      textAlign: 'center'
     },
-    bntLogin:{
-        backgroundColor: "#CCCCCC",
-        width: 330,
-        height: 50,
-        marginTop: 20,
-        marginLeft:40,
-        elevation: 5
+    textoLogo1:{
+        flex:2,
+        fontSize: 48,
+        color: "#FFFFFF",
+        marginTop: 15,
+        textAlign:'center',
+        textShadowColor: colors.black,
+        textShadowOffset: {width: 3, height: 3},
+        textShadowRadius: 3.84        
     },
-    bntCadastrar:{
-        backgroundColor: "#3221A1",
-        width: 330,
-        height: 50,
-        marginTop: 20,
-        marginLeft:40,
-        elevation: 5,
+    textoLogo2:{
+        flex:3,
+        fontSize: 20,
+        color: "#C4C4C4",
+        marginTop: 2,
+        textAlign:'center',
+        textShadowColor: colors.black,
+        textShadowOffset: {width: 3, height: 3},
+        textShadowRadius: 3.84 
     },
     bgImagem:{
         marginTop: 25,
@@ -94,13 +113,33 @@ const styles = StyleSheet.create({
         height: 125
     },
     txtLogin:{
-        color: "#000000",
+        color: colors.navyBlue,
         fontSize: 20,
-        paddingStart: 130
+        fontWeight: 'bold',
+        paddingLeft:73
     },
     txtCadastrar:{
         color: "#FFFFFF",
         fontSize: 20,
-        paddingStart: 105
+        fontWeight: 'bold',
+        paddingLeft:50
     }
-});
+  });
+
+  const mapState = state => ({
+    register: state.registerReducer
+  })
+
+  const mapDispatch = dispatch => {
+    return {
+      //setName: (name) => dispatch(setName(name)),
+      //setBirthDate: (birthDate) => dispatch(setBirthDate(birthDate)),
+      //setSex: (sex) => dispatch(setSex(sex)),
+      //setEmail: (email) => dispatch(setEmail(email)),
+      //setPassword: (password) => dispatch(setPassword(password)),
+      //setConfirmationPassword: (confirmationPassword) => dispatch(setConfirmationPassword(confirmationPassword)),
+      //setErrorMessage: (errorMessage) => dispatch(setErrorMessage(errorMessage)),
+    }
+  }
+
+  export const LoginConnected = connect(mapState, mapDispatch)(Login);

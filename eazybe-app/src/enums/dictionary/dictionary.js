@@ -28,6 +28,8 @@ const texts = {
   "register:label:invalid-cep": "Informe um CEP válido.",
   "register:label:unknown-error": "Houve um erro desconhecido. Tente novamente mais tarde.",
   "register:label:invalid-number": "Informe um número válido",
+  "register:btn:login": "Login",
+  "register:btn:cadastre-se": "Cadastre-se",
 };
 
 export default getText = (key) => key ? texts[key] || 'Parâmetro não encontrado' : ''
