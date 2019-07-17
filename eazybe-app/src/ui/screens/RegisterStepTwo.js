@@ -99,13 +99,12 @@ class RegisterStepTwo extends Component {
   }
 
   registerUser = () => {
-    const { register, setLoading, setUserAddress, setErrorMessage } = this.props;
+    const { register, setLoading, setUserAddress, setErrorMessage, navigation } = this.props;
     const validNumber = register.userAddress.number.length;
     Reactotron.log(!register.invalidCep, validNumber )
     if (!register.invalidCep && validNumber) {
       setErrorMessage('');
-      //navigate to feed!!!
-      //will be implemented
+      navigation.navigate('Noticias')
       return;
     }
 

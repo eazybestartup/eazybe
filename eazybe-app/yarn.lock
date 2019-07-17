@@ -5607,6 +5607,13 @@ react-native-keyboard-aware-scroll-view@0.8.0:
     prop-types "^15.6.2"
     react-native-iphone-x-helper "^1.0.3"
 
+react-native-material-bottom-navigation@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-material-bottom-navigation/-/react-native-material-bottom-navigation-1.0.4.tgz#c9c9bf4a2f8d260a50703a39e01f600cc6cf66d6"
+  integrity sha512-g/2uaELl8Nhol5AVkFDUT6p4/nfLmTSlipjMrnw2kKBf1NBJuEZ2h/B7E4gg9KtryWPUjYc5Nixd9IwwNH2bLA==
+  dependencies:
+    prop-types "^15.6.1"
+
 react-native-ratings@^6.3.0:
   version "6.3.1"
   resolved "https://registry.yarnpkg.com/react-native-ratings/-/react-native-ratings-6.3.1.tgz#4e4bd87f376423dc62c933f570fc1932c78adaa4"
@@ -5736,6 +5743,11 @@ react-navigation-tabs@~1.1.4:
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
     react-native-tab-view "^1.4.1"
+
+react-navigation-transitions@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/react-navigation-transitions/-/react-navigation-transitions-1.0.11.tgz#8112c69ca0190ff6d2e2771a4d0d3a8f318c9677"
+  integrity sha512-1P4QHIWnMRTesarR7Di0EV/o8+OxBbbKNe8C7lSztiXTdTP9EnwYZGBLUKiHKn+Js7E48vQ2d3cB3lpb8YDmDg==
 
 react-navigation@^3.11.0:
   version "3.11.0"
