@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 import { Container, Content, Button } from 'native-base';
 import InputWithLabel from '../components/register/InputWithLabel/InputWithLabel';
-import ErrorMessage from '../../ui/components/register/ErrorMessage/ErrorMessage';
 import colors from '../colors/colors.enum';
 import getText from '../../enums/dictionary/dictionary';
 import { connect } from 'react-redux';
@@ -12,13 +11,13 @@ export default class Login extends Component{
         super(props);
         this.state = {
         };
-        this.navigateToFeed = this.navigateToFeed.bind(this);
+        this.navigateToNoticias = this.navigateTonoticias.bind(this);
     }
     static navigationOptions = {
         header: null
     }
-    navigateToFeed = () => {
-        return this.props.navigation.navigate('FeedConnected')
+    navigateTonoticias = () => {
+        return this.props.navigation.navigate('Noticias')
     }
 
     render(){
@@ -38,7 +37,7 @@ export default class Login extends Component{
                         <InputWithLabel label='register:label:password' placeholder='register:placeholder:password'/>
                         <View style = {styles.flex3}>
                             <Text style={styles.errorMessage}></Text>
-                            <Button style={styles.alignSelfCenter1} success onPress={this.navigateToFeed}>
+                            <Button style={styles.alignSelfCenter1} success onPress={this.navigateToNoticias}>
                                 <Text style={styles.txtLogin}>{getText('register:btn:login')}</Text>
                             </Button>
                             <Button style={styles.alignSelfCenter2} success onPress={() => this.props.navigation.navigate('RegisterStepOneConnected')}>

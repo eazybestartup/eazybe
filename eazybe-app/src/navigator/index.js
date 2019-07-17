@@ -8,9 +8,6 @@ import Noticias from '../ui/screens/Noticias';
 import User from '../ui/screens/User';
 import { TabNavigatorConnect } from './TabNavigator/TabNavigator'
 import colors from '../ui/colors/colors.enum';
-<<<<<<< HEAD
-import FeedConnected from '../ui/screens/Feed'
-=======
 import { fromLeft, fromRight, fadeIn, zoomIn, zoomOut } from 'react-navigation-transitions';
 
 const handleCustomTransition = ({ scenes }) => {
@@ -33,14 +30,12 @@ const whichEffect = (prevScene, nextScene) => {
       return fadeIn(500);
   }
 }
->>>>>>> master
 
 const AppNavigator = createStackNavigator(
 {
   Products,
   Cart,
   LoginConnected,
-  FeedConnected,
   RegisterStepOneConnected,
   RegisterStepTwoConnected,
   TabNavigatorConnect,
