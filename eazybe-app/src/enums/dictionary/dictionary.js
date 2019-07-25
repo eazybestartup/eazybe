@@ -30,6 +30,10 @@ const texts = {
   "register:label:invalid-number": "Informe um número válido",
   "register:btn:login": "Login",
   "register:btn:cadastre-se": "Cadastre-se",
+  "newPost:user-mock":"Lucas Dutra",
+  "newPost:textarea:placeholder":"Diga o que está acontecendo no seu bairro",
+  "newPost:label:category": "Categoria:",
+  "newPost:label:publish": "Publicar",
 };
 
 export default getText = (key) => key ? texts[key] || 'Parâmetro não encontrado' : ''
