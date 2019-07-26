@@ -104,7 +104,7 @@ class RegisterStepTwo extends Component {
     Reactotron.log(!register.invalidCep, validNumber )
     if (!register.invalidCep && validNumber) {
       setErrorMessage('');
-      navigation.navigate('Noticias')
+      navigation.navigate('NoticiasConnected')
       return;
     }
 

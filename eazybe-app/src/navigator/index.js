@@ -4,7 +4,7 @@ import Products from '../ui/screens/Products';
 import LoginConnected from '../ui/screens/Login';
 import { RegisterStepOneConnected } from '../ui/screens/RegisterStepOne';
 import { RegisterStepTwoConnected } from '../ui/screens/RegisterStepTwo';
-import Noticias from '../ui/screens/Noticias';
+import { NoticiasConnected } from '../ui/screens/Noticias';
 import User from '../ui/screens/User';
 import { TabNavigatorConnect } from './TabNavigator/TabNavigator'
 import colors from '../ui/colors/colors.enum';
@@ -39,7 +39,7 @@ const AppNavigator = createStackNavigator(
   RegisterStepOneConnected,
   RegisterStepTwoConnected,
   TabNavigatorConnect,
-  Noticias,
+  NoticiasConnected,
   User,
 },
 {

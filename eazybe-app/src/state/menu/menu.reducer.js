@@ -8,7 +8,7 @@ const INITIAL_STATE = {
   lastTab: undefined,
   tabs: [
     {
-      key: 'Noticias',
+      key: 'NoticiasConnected',
       icon: 'rss-square',
       label: 'Notícias',
       barColor: colors.navyBlue,
