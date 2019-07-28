@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import cartReducer from '../cart/cart.reducer';
 import registerReducer from '../register/register.reducer';
 import menuReducer from '../menu/menu.reducer';
+import userReducer from '../User/user.reducer';
 
 // aqui combinamos todos os reducers do projeto para criar um reducer master e aí passar pra store
 // no arquivo App.js
@@ -9,5 +10,6 @@ import menuReducer from '../menu/menu.reducer';
 export default combineReducers({
   cartReducer,
   registerReducer,
-  menuReducer
+  menuReducer,
+  userReducer
 });

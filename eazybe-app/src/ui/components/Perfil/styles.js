@@ -7,8 +7,8 @@ export const styles = StyleSheet.create({
         backgroundColor: colors.bgContent
     },
     bgImage:{
-        width: 150,
-        height: 150,
+        width: 148,
+        height: 148,
         alignSelf: 'center',
     },
     iconeCam:{
@@ -24,9 +24,9 @@ export const styles = StyleSheet.create({
     },
     txtUserPerfil:{
         color: colors.black,
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: 'bold',
-        textAlign: 'center'
+        textAlign: 'center',
     },
     alignSelfEnd:{
         alignSelf: 'flex-end',
@@ -40,7 +40,8 @@ export const styles = StyleSheet.create({
     },
     userInfo:{
         backgroundColor: colors.bgdadosUser,
-        height: 200,
+        height: 240,
+        marginTop: 10
     },
     txtDados:{
         fontWeight: 'bold',
@@ -55,17 +56,26 @@ export const styles = StyleSheet.create({
         marginTop: 5
     },
     imgEnd:{
+        marginTop: 20,
+        marginLeft: 24,
+        marginRight: 20,
+        width: 40,
+        height: 40
+    },
+    imgMail:{
         marginTop: 15,
         marginLeft: 24,
-        width: 30,
-        height: 30
+        marginRight: 20,
+        width: 40,
+        height: 40
     },
     txtEnd:{
-        marginTop: 15,
-        marginLeft: 24,
+        marginTop: 10,
         color: colors.black,
         fontWeight: 'bold',
-        fontSize: 18
+        fontSize: 18,
+        textAlignVertical:'top',
+        width: 300
     },
     bntEdit:{
         width: 109,
@@ -79,5 +89,9 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 18,
         paddingLeft: 35
+    },
+    teste:{
+        flexDirection: 'row',
+        flexWrap: 'wrap',
     }
 });

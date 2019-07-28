@@ -3,8 +3,10 @@ import { View, Image, Text, StyleSheet } from 'react-native'
 import { Button } from 'native-base'
 import getText from '../../../enums/dictionary/dictionary'
 import {styles} from './styles'
+import { connect } from 'react-redux'
+import { TextInput } from 'react-native-gesture-handler';
 
-export default class ImgPefil extends Component{
+export class ImgPefil extends Component{
     render(){
         return(
             <View style={styles.areaImgPerfil}>
@@ -14,9 +16,25 @@ export default class ImgPefil extends Component{
                 </Button>
                 <View style={styles.alignSelfCenter}>
                     <Image source={require('../../../assets/Perfil/Avatares/AvatarMasculino4.png')} style={styles.bgImage}></Image>
-                    <Text style={styles.txtUserPerfil}>nome do usáruo</Text>
+                    <TextInput style={styles.txtUserPerfil} value={this.props.nome}></TextInput>
                 </View>
             </View>
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+      nome:state.userReducer.nome,
+      rua:state.userReducer.rua,
+      num:state.userReducer.num,
+      complemento:state.userReducer.complemento,
+      bairro:state.userReducer.bairro,
+      cidade:state.userReducer.cidade,
+      estado:state.userReducer.estado
+    };
+  };
+  
+  const ImgPerfilConnect = connect(mapStateToProps)(ImgPefil);
+  
+  export default ImgPerfilConnect;

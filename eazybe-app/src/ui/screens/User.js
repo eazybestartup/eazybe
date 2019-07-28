@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, Stylesheet } from 'react-native';
-import { TabNavigatorConnect } from '../../navigator/TabNavigator/TabNavigator'
-import colors from '../colors/colors.enum'
-import ImgPerfil from '../components/Perfil/imgPerfil'
-import InfoUser from '../components/Perfil/infoUser'
+import { TabNavigatorConnect } from '../../navigator/TabNavigator/TabNavigator';
+import colors from '../colors/colors.enum';
+import ImgPerfil from '../components/Perfil/imgPerfil';
+import InfoUser from '../components/Perfil/infoUser';
 
 const styles = {
   flex1: { flex: 1, backgroundColor: colors.bgContent },

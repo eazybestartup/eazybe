@@ -1,22 +1,25 @@
 import React, { Component } from 'react'
-import { View, Image, Text, StyleSheet } from 'react-native'
+import { View, Image, Text } from 'react-native'
 import { Button } from 'native-base'
 import getText from '../../../enums/dictionary/dictionary'
 import {styles} from './styles'
-import colors from '../../colors/colors.enum'
+import { connect } from 'react-redux'
+import { TextInput } from 'react-native-gesture-handler';
 
-export default class InfoUser extends Component{
+export class InfoUser extends Component{
     render(){
         return(
             <View style={styles.userInfo}>
                 <Text style={styles.txtDados}>{getText('register:label:dadosUser')}</Text>
                 <View style={styles.infoEnd_email}>
                     <Image source={require('../../../assets/Perfil/Icones/Placa.png')} style={styles.imgEnd}></Image>
-                    <Text style={styles.txtEnd}>Endereço do usuario</Text>
+                    <View style={styles.teste}>
+                        <TextInput multiline={true} editable={false} style={styles.txtEnd} value={this.props.rua + this.props.num + this.props.complemento + this.props.bairro + this.props.cidade + this.props.estado}></TextInput>
+                    </View>
                 </View>
                 <View style={styles.infoEnd_email}>
-                    <Image source={require('../../../assets/Perfil/Icones/email.png')} style={styles.imgEnd}></Image>
-                    <Text style={styles.txtEnd}>E-mail do usuario</Text>
+                    <Image source={require('../../../assets/Perfil/Icones/email.png')} style={styles.imgMail}></Image>
+                    <TextInput editable={false} style={styles.txtEnd} value={this.props.mail}></TextInput>
                 </View>
                 <Button primary style={styles.bntEdit}>
                     <Text style={styles.bntTxtEditar}>{getText('register:btn:editarDados')}</Text>
@@ -25,3 +28,20 @@ export default class InfoUser extends Component{
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+      nome:state.userReducer.nome,
+      rua:state.userReducer.rua,
+      num:state.userReducer.num,
+      complemento:state.userReducer.complemento,
+      bairro:state.userReducer.bairro,
+      cidade:state.userReducer.cidade,
+      estado:state.userReducer.estado,
+      mail:state.userReducer.mail,
+    };
+  };
+  
+  const InfoUserConnect = connect(mapStateToProps)(InfoUser);
+  
+export default InfoUserConnect;
