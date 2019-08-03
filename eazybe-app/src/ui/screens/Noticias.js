@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import { View, Text, Stylesheet } from 'react-native';
+import { ScrollView, Text, StyleSheet, View } from 'react-native';
+import { withNavigation } from 'react-navigation';
+import ButtonNewPost from '../components/noticias/ButtonNewPost/ButtonNewPost';
 import { TabNavigatorConnect } from '../../navigator/TabNavigator/TabNavigator'
 
-const styles = {
+const styles = StyleSheet.create({
   flex1: { flex: 1 },
-  flex10: { flex: 10 }
-}
+  flex10: { flex: 11, height: '100%' },
+  btnNewPost: { position: 'absolute', right: 0, bottom: 0 },
+  
+})
 
-export default class Noticias extends Component {
+class Noticias extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,20 +23,24 @@ export default class Noticias extends Component {
     title: 'Notícias'
   }
 
-  componentDidMount() {
-    this.forceUpdate()
-  }
-
   render() {
     return (
       <View style={styles.flex1}>
+        
         <View style={styles.flex10}>
-          <Text> Noticias </Text>
+          <ScrollView>
+            <Text>Scroll</Text>
+          </ScrollView>
+          <View style={styles.btnNewPost}>
+            <ButtonNewPost onPress={() => this.props.navigation.navigate('NewPost')} />
+          </View>
         </View>
         <View style={styles.flex1}>
-          <TabNavigatorConnect />
+        <TabNavigatorConnect />
         </View>
       </View>
     );
   }
 }
+
+export default withNavigation(Noticias)
