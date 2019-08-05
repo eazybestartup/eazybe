@@ -77,20 +77,7 @@ export const styles = StyleSheet.create({
         textAlignVertical:'top',
         width: 300
     },
-    bntEdit:{
-        width: 109,
-        height:30,
-        alignSelf: 'flex-end',
-        marginEnd: 20,
-        marginTop: 20,
-    },
-    bntTxtEditar:{
-        color: colors.white,
-        fontWeight: 'bold',
-        fontSize: 18,
-        paddingLeft: 35
-    },
-    teste:{
+    infoEndUser:{
         flexDirection: 'row',
         flexWrap: 'wrap',
     }

@@ -6,6 +6,7 @@ import { RegisterStepOneConnected } from '../ui/screens/RegisterStepOne';
 import { RegisterStepTwoConnected } from '../ui/screens/RegisterStepTwo';
 import Noticias from '../ui/screens/Noticias';
 import User from '../ui/screens/User';
+import editUser from '../ui/screens/editUser'
 import { TabNavigatorConnect } from './TabNavigator/TabNavigator'
 import colors from '../ui/colors/colors.enum';
 import { fromLeft, fromRight, fadeIn, zoomIn, zoomOut } from 'react-navigation-transitions';
@@ -41,6 +42,7 @@ const AppNavigator = createStackNavigator(
   TabNavigatorConnect,
   Noticias,
   User,
+  editUser,
 },
 {
   initialRouteName: 'LoginConnected',

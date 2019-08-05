@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { View, Image, Text } from 'react-native'
-import { Button } from 'native-base'
 import getText from '../../../enums/dictionary/dictionary'
 import {styles} from './styles'
 import { connect } from 'react-redux'
@@ -13,7 +12,7 @@ export class InfoUser extends Component{
                 <Text style={styles.txtDados}>{getText('register:label:dadosUser')}</Text>
                 <View style={styles.infoEnd_email}>
                     <Image source={require('../../../assets/Perfil/Icones/Placa.png')} style={styles.imgEnd}></Image>
-                    <View style={styles.teste}>
+                    <View style={styles.infoEndUser}>
                         <TextInput multiline={true} editable={false} style={styles.txtEnd} value={this.props.rua + this.props.num + this.props.complemento + this.props.bairro + this.props.cidade + this.props.estado}></TextInput>
                     </View>
                 </View>
@@ -21,9 +20,6 @@ export class InfoUser extends Component{
                     <Image source={require('../../../assets/Perfil/Icones/email.png')} style={styles.imgMail}></Image>
                     <TextInput editable={false} style={styles.txtEnd} value={this.props.mail}></TextInput>
                 </View>
-                <Button primary style={styles.bntEdit}>
-                    <Text style={styles.bntTxtEditar}>{getText('register:btn:editarDados')}</Text>
-                </Button>
             </View>
         );
     }
