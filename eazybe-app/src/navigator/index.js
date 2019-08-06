@@ -9,6 +9,8 @@ import LoginConnected from '../ui/screens/Login';
 import { NoticiasConnected } from '../ui/screens/Noticias';
 import User from '../ui/screens/User';
 import NewPost from '../ui/screens/NewPost';
+import colors from '../ui/colors/colors.enum';
+
 const handleCustomTransition = ({ scenes }) => {
   const prevScene = scenes[scenes.length - 2];
   const nextScene = scenes[scenes.length - 1];
