@@ -17,7 +17,7 @@ export default class Login extends Component{
         header: null
     }
     navigateTonoticias = () => {
-        return this.props.navigation.navigate('Noticias')
+        return this.props.navigation.navigate('NoticiasConnected')
     }
 
     render(){

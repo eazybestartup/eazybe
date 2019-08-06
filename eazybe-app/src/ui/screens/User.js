@@ -4,7 +4,7 @@ import { TabNavigatorConnect } from '../../navigator/TabNavigator/TabNavigator'
 
 const styles = {
   flex1: { flex: 1 },
-  flex10: { flex: 10 }
+  flex11: { flex: 11 }
 }
 
 export default class Usuário extends Component {
@@ -22,7 +22,7 @@ export default class Usuário extends Component {
   render() {
     return (
       <View style={styles.flex1}>
-        <View style={styles.flex10}>
+        <View style={styles.flex11}>
           <Text> Usuário </Text>
         </View>
         <View style={styles.flex1}>

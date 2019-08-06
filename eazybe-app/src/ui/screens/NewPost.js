@@ -88,7 +88,7 @@ class NewPost extends Component {
                 </Picker>
               </View>
               <View style={styles.vwBtnPublish}>
-                <Button style={styles.btnPublish} onPress={() => this.props.navigation.navigate('Noticias')}>
+                <Button style={styles.btnPublish} onPress={() => this.props.navigation.navigate('NoticiasConnected')}>
                   <Text>{`${getText("newPost:label:publish")}`}</Text>
                 </Button>
               </View>
