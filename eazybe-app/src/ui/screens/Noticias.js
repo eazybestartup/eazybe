@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { View, Text, StyleSheet, FlatList, ActivityIndicator } from 'react-native';
-import Reactotron from 'reactotron-react-native';
 import {
   newsFeedLoading,
   addPage,
@@ -9,11 +6,21 @@ import {
   fetchNews
 } from '../../state/news/news.actions';
 import { TabNavigatorConnect } from '../../navigator/TabNavigator/TabNavigator';
+import { ScrollView, Text, StyleSheet, View, FlatList, ActivityIndicator } from 'react-native';
+import ButtonNewPost from '../components/noticias/ButtonNewPost/ButtonNewPost';
+import { connect } from 'react-redux';
+import { withNavigation } from 'react-navigation'
 
 const styles = StyleSheet.create({
+  listItem: {
+    backgroundColor: '#EEE',
+    marginTop: 20,
+    padding: 30,
+  },
+  marginTopFlatList: { marginTop: 30 },
   flex1: { flex: 1 },
   flex10: { flex: 10 },
-    list: {
+  list: {
     paddingHorizontal: 20,
   },
 
@@ -22,7 +29,9 @@ const styles = StyleSheet.create({
     marginTop: 20,
     padding: 30,
   },
-  marginTopFlatList: { marginTop: 30 }
+  marginTopFlatList: { marginTop: 30 },
+  flex11: { flex: 11, height: '100%' },
+  btnNewPost: { position: 'absolute', right: 0, bottom: 40 },
 });
 
 class Noticias extends Component {
@@ -61,7 +70,7 @@ class Noticias extends Component {
     //Reactotron.log('data', this.props.news.data)
     return (
       <View style={styles.flex1}>
-        <View style={styles.flex10}>
+        <View style={styles.flex11}>
           <FlatList
             style={styles.marginTopFlatList}
             contentContainerStyle={styles.list}
@@ -75,9 +84,12 @@ class Noticias extends Component {
         </View>
         <View style={styles.flex1}>
           <TabNavigatorConnect />
+          <View style={styles.btnNewPost}>
+            <ButtonNewPost onPress={() => this.props.navigation.navigate('NewPost')} />
+          </View>
         </View>
       </View>
-    );
+    )
   }
 }
 
@@ -94,4 +106,4 @@ const mapDispatch = dispatch => {
 }
 
 
-export const NoticiasConnected = connect(mapState, mapDispatch)(Noticias)
+export const NoticiasConnected = connect(mapState, mapDispatch)(withNavigation(Noticias))

@@ -1,15 +1,14 @@
 import { createStackNavigator, createAppContainer } from "react-navigation";
+import { fromLeft, fromRight, fadeIn } from 'react-navigation-transitions';
+import { RegisterStepOneConnected } from '../ui/screens/RegisterStepOne';
+import { RegisterStepTwoConnected } from '../ui/screens/RegisterStepTwo';
+import { TabNavigatorConnect } from './TabNavigator/TabNavigator'
 import Cart from '../ui/screens/Cart';
 import Products from '../ui/screens/Products';
 import LoginConnected from '../ui/screens/Login';
-import { RegisterStepOneConnected } from '../ui/screens/RegisterStepOne';
-import { RegisterStepTwoConnected } from '../ui/screens/RegisterStepTwo';
 import { NoticiasConnected } from '../ui/screens/Noticias';
 import User from '../ui/screens/User';
-import { TabNavigatorConnect } from './TabNavigator/TabNavigator'
-import colors from '../ui/colors/colors.enum';
-import { fromLeft, fromRight, fadeIn, zoomIn, zoomOut } from 'react-navigation-transitions';
-
+import NewPost from '../ui/screens/NewPost';
 const handleCustomTransition = ({ scenes }) => {
   const prevScene = scenes[scenes.length - 2];
   const nextScene = scenes[scenes.length - 1];
@@ -41,6 +40,7 @@ const AppNavigator = createStackNavigator(
   TabNavigatorConnect,
   NoticiasConnected,
   User,
+  NewPost
 },
 {
   initialRouteName: 'LoginConnected',
