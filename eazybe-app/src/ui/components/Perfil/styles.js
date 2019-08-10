@@ -80,5 +80,10 @@ export const styles = StyleSheet.create({
     infoEndUser:{
         flexDirection: 'row',
         flexWrap: 'wrap',
+    },
+    userEdit:{
+        backgroundColor: colors.bgdadosUser,
+        height: 375,
+        marginTop: 50,
     }
 });

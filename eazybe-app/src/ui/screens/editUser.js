@@ -3,11 +3,12 @@ import { View, Text, Stylesheet } from 'react-native';
 import { TabNavigatorConnect } from '../../navigator/TabNavigator/TabNavigator';
 import colors from '../colors/colors.enum';
 import ImgPerfil from '../components/Perfil/imgPerfil';
+import InfoEditUser from '../components/Perfil/infoEditUser';
 
 const styles = {
   flex1: { flex: 1, backgroundColor: colors.bgContent },
-  flex4: { flex: 4 },
-  flex6: { flex: 6 },
+  //flex4: { flex: 4 },
+  //flex6: { flex: 6 },
 }
 
 export default class Usuário extends Component {
@@ -25,13 +26,13 @@ export default class Usuário extends Component {
   render() {
     return (
       <View style={styles.flex1}>
-        <View style={styles.flex4}>
+        <View>
           <ImgPerfil></ImgPerfil>
         </View>
-        <View style={styles.flex6}>
+        <View>
+          <InfoEditUser></InfoEditUser>
         </View>
-        <View style={styles.flex1}>
-        </View>
+        
       </View>
     );
   }
