@@ -12,7 +12,9 @@ import {
   setUserAddress,
   setLoading,
   setErrorMessage,
-  setInvalidCep
+  setInvalidCep,
+  registerUser,
+  fetchCep
 } from '../../state/register/register.actions';
 import { urls } from '../../services/_base/urls';
 import UserAddress from '../../models/UserAddress'
@@ -42,43 +44,12 @@ class RegisterStepTwo extends Component {
   }
 
   setCepAndCallApi(cep) {
-    const { setCep, setInvalidCep } = this.props;
+    const { setCep, setInvalidCep, fetchCep } = this.props;
     setCep(cep);
     if(cep.length === 8) {
-      return this.callApi(cep);
+      return fetchCep(cep);
     }
     setInvalidCep(true);
-  }
-
-  callApi = cep => {
-    const { register, setLoading, setUserAddress, setErrorMessage, setInvalidCep } = this.props;
-    setLoading(true);
-    const url = urls.cep.replace('#cep', cep);
-    axios.get(url).then(res => {
-      if (res.data.erro) {
-        setLoading(false);
-        setInvalidCep(true);
-        setErrorMessage(getText('register:label:invalid-cep'));
-        return;
-      }
-      const userAddress = new UserAddress(
-        res.data.cep.replace('-', ''),
-        res.data.logradouro,
-        register.userAddress.number,
-        res.data.bairro,
-        register.userAddress.complement,
-        res.data.localidade,
-        res.data.uf,
-      );
-      setUserAddress(userAddress);
-      setLoading(false);
-      setInvalidCep(false);
-      setErrorMessage('');
-    }).catch(e => {
-      setLoading(false);
-      setInvalidCep(true);
-      setErrorMessage(getText('register:label:unknown-error'))
-    }) 
   }
 
   concatCityAndUf = (userAddress) => {
@@ -99,11 +70,12 @@ class RegisterStepTwo extends Component {
   }
 
   registerUser = () => {
-    const { register, setLoading, setUserAddress, setErrorMessage, navigation } = this.props;
+    const { register, setLoading, setUserAddress, setErrorMessage, navigation, registerUser } = this.props;
     const validNumber = register.userAddress.number.length;
-    Reactotron.log(!register.invalidCep, validNumber )
     if (!register.invalidCep && validNumber) {
       setErrorMessage('');
+      registerUser()
+      //
       navigation.navigate('NoticiasConnected')
       return;
     }
@@ -169,7 +141,9 @@ const mapDispatch = dispatch => {
     setLoading: loading => dispatch(setLoading(loading)),
     setUserAddress: address => dispatch(setUserAddress(address)),
     setErrorMessage: (errorMessage) => dispatch(setErrorMessage(errorMessage)),
-    setInvalidCep: invalid => dispatch(setInvalidCep(invalid))
+    setInvalidCep: invalid => dispatch(setInvalidCep(invalid)),
+    registerUser: () => dispatch(registerUser()),
+    fetchCep: cep => dispatch(fetchCep(cep))
   };
 }
 

@@ -16,6 +16,8 @@ import {
   SET_ERROR_MESSAGE,
   SET_LOADING,
   SET_INVALID_CEP,
+  REGISTER_USER,
+  FETCH_CEP_VIA_CEP
 } from './register.actionTypes';
 
 const setName = (name) => {
@@ -95,6 +97,19 @@ const setInvalidCep = invalid => {
   }
 }
 
+const registerUser = () => {
+  return {
+    type: REGISTER_USER,
+  }
+}
+
+const fetchCep = (cep) => {
+  return {
+    type: FETCH_CEP_VIA_CEP,
+    cep
+  }
+}
+
 export {
   setName,
   setBirthDate,
@@ -106,5 +121,7 @@ export {
   setUserAddress,
   setErrorMessage,
   setLoading,
-  setInvalidCep
+  setInvalidCep,
+  registerUser,
+  fetchCep
 };

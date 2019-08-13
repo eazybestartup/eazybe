@@ -1,18 +1,21 @@
-import { takeLatest, select, call, put } from 'redux-saga/effects';
+import { takeLatest, select, call, put, all } from 'redux-saga/effects';
 import {
   setUserAddress,
   setErrorMessage,
   setLoading,
-  setInvalidCep,
+  setInvalidCep
 } from './register.actions';
 import UserAddress from '../../models/UserAddress'
+import User from '../../models/User'
 
 import {
-  FETCH_CEP_VIA_CEP
+  FETCH_CEP_VIA_CEP,
+  REGISTER_USER
 } from './register.actionTypes';
 
 import RegisterService from '../../services/register/register.service'
 import getText from '../../enums/dictionary/dictionary';
+import Reactotron from 'reactotron-react-native';
 
 const registerService = new RegisterService();
 
@@ -23,7 +26,14 @@ function _fetchDataFromViaCep(cep) {
     .catch(err => ({ err }))
 }
 
-export function* _fetchCep({ cep }) {
+function registerUser(normalizedUser) {
+  return registerService
+    .createUser(normalizedUser)
+    .then(res => ({ res }))
+    .catch(err => ({ err }))
+}
+
+function* _fetchCep({ cep }) {
   yield put(setLoading(true));
   try {
     const { res, err } = yield call(_fetchDataFromViaCep, cep);
@@ -53,6 +63,24 @@ export function* _fetchCep({ cep }) {
   }
 }
 
+export function* _registerUser() {
+  yield put(setLoading(true));
+  try {
+    const { registerReducer } = yield select();
+    const normalizedUser = User.normalizeUser(registerReducer);
+    const { res, err } = yield call(registerUser, normalizedUser);
+    Reactotron.log({ res, err })
+  } catch(e) {
+    yield put(setErrorMessage(getText('register:label:unknown-error')));
+    yield put(setLoading(false));
+  } finally {
+    yield put(setLoading(false));
+  }
+}
+
 export function* registerSaga() {
-  yield takeLatest(FETCH_CEP_VIA_CEP, _fetchCep);
+  yield all([
+    takeLatest(FETCH_CEP_VIA_CEP, _fetchCep),
+    takeLatest(REGISTER_USER, _registerUser)
+  ]);
 }

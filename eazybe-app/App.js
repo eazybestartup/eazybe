@@ -10,6 +10,7 @@ import rootReducer from './src/state/main';
 
 // sagas
 import { newsSaga } from './src/state/news/news.saga'
+import { registerSaga } from './src/state/register/register.saga'
 
 if (__DEV__) {
   Reactotron
@@ -24,6 +25,7 @@ moment().locale('pt-br')
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(rootReducer, compose(Reactotron.createEnhancer(), applyMiddleware(sagaMiddleware)))
 sagaMiddleware.run(newsSaga)
+sagaMiddleware.run(registerSaga)
 
 export default class App extends React.Component {
   render() {
