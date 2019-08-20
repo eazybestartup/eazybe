@@ -10,7 +10,13 @@ import { ScrollView, Text, StyleSheet, View, FlatList, ActivityIndicator } from 
 import ButtonNewPost from '../components/noticias/ButtonNewPost/ButtonNewPost';
 import { connect } from 'react-redux';
 import { withNavigation } from 'react-navigation'
+//import { TabNavigatorConnect } from '../../navigator/TabNavigator/TabNavigator'
+import colors from '../colors/colors.enum'
 
+//const styles = {
+  //flex1: { flex: 1, backgroundColor: colors.bgContent },
+  //flex10: { flex: 10 }
+//}
 const styles = StyleSheet.create({
   listItem: {
     backgroundColor: '#EEE',

@@ -8,6 +8,7 @@ import Products from '../ui/screens/Products';
 import LoginConnected from '../ui/screens/Login';
 import { NoticiasConnected } from '../ui/screens/Noticias';
 import User from '../ui/screens/User';
+import editUser from '../ui/screens/editUser'
 import NewPost from '../ui/screens/NewPost';
 import colors from '../ui/colors/colors.enum';
 
@@ -42,6 +43,7 @@ const AppNavigator = createStackNavigator(
   TabNavigatorConnect,
   NoticiasConnected,
   User,
+  editUser,
   NewPost
 },
 {
