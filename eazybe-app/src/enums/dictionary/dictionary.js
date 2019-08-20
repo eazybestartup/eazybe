@@ -32,7 +32,11 @@ const texts = {
   "register:btn:cadastre-se": "Cadastre-se",
   "register:btn:editarImagem": "Editar imagem",
   "register:label:dadosUser": "Dados:",
-  "register:btn:editarDados": "Editar"
+  "register:btn:editarDados": "Editar",
+  "newPost:user-mock":"Lucas Dutra",
+  "newPost:textarea:placeholder":"Diga o que está acontecendo no seu bairro",
+  "newPost:label:category": "Categoria:",
+  "newPost:label:publish": "Publicar",
 };
 
 export default getText = (key) => key ? texts[key] || 'Parâmetro não encontrado' : ''
