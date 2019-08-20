@@ -33,6 +33,7 @@ const texts = {
   "register:btn:editarImagem": "Editar imagem",
   "register:label:dadosUser": "Dados:",
   "register:btn:editarDados": "Editar",
+  "register:btn:salvarDados": "Salvar",
   "newPost:user-mock":"Lucas Dutra",
   "newPost:textarea:placeholder":"Diga o que está acontecendo no seu bairro",
   "newPost:label:category": "Categoria:",

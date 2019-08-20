@@ -84,6 +84,6 @@ export const styles = StyleSheet.create({
     userEdit:{
         backgroundColor: colors.bgdadosUser,
         height: 375,
-        marginTop: 50,
+        marginTop: 50, 
     }
 });
