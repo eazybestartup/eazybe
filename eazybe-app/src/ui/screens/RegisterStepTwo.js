@@ -74,10 +74,7 @@ class RegisterStepTwo extends Component {
     const validNumber = register.userAddress.number.length;
     if (!register.invalidCep && validNumber) {
       setErrorMessage('');
-      registerUser()
-      //
-      navigation.navigate('NoticiasConnected')
-      return;
+      return registerUser()
     }
 
     if(register.invalidCep) {

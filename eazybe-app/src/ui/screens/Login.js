@@ -1,23 +1,40 @@
 import React, { Component } from 'react';
 import {View, Text, StyleSheet, ImageBackground} from 'react-native';
-import { Container, Content, Button } from 'native-base';
+import { Container, Content, Button, Spinner } from 'native-base';
 import InputWithLabel from '../components/register/InputWithLabel/InputWithLabel';
 import colors from '../colors/colors.enum';
 import getText from '../../enums/dictionary/dictionary';
 import { connect } from 'react-redux';
+import { authenticate } from '../../state/register/register.actions'
+import Reactotron from 'reactotron-react-native';
 
-export default class Login extends Component{
+class Login extends Component{
     constructor(props){
         super(props);
         this.state = {
+          email: '',
+          password: '',
         };
         this.navigateToNoticias = this.navigateTonoticias.bind(this);
+        this.authUser = this.authUser.bind(this);
     }
     static navigationOptions = {
         header: null
     }
+
     navigateTonoticias = () => {
         return this.props.navigation.navigate('NoticiasConnected')
+    }
+
+    setEmail = email => this.setState({ email });
+
+    setPassword = password => this.setState({ password });
+
+    authUser = () => {
+      this.props.authenticate({
+        email: this.state.email,
+        password: this.state.password
+      })
     }
 
     render(){
@@ -33,17 +50,18 @@ export default class Login extends Component{
                     </View>
                     <ImageBackground source={require('../../assets/Login/logotipo.png')} style={styles.bgImagem}></ImageBackground>
                     <View style = {styles.flex2}>
-                        <InputWithLabel label='register:label:email' placeholder='register:placeholder:email'/>
-                        <InputWithLabel label='register:label:password' placeholder='register:placeholder:password'/>
+                        <InputWithLabel onChangeText={email => this.setEmail(email)} label='register:label:email' placeholder='register:placeholder:email'/>
+                        <InputWithLabel secureTextEntry={true} onChangeText={password => this.setPassword(password)} label='register:label:password' placeholder='register:placeholder:password'/>
+                        {register.loading ? <Spinner color='yellow' /> : 
                         <View style = {styles.flex3}>
                             <Text style={styles.errorMessage}></Text>
-                            <Button style={styles.alignSelfCenter1} success onPress={this.navigateToNoticias}>
+                            <Button style={styles.alignSelfCenter1} success onPress={this.authUser}>
                                 <Text style={styles.txtLogin}>{getText('register:btn:login')}</Text>
                             </Button>
                             <Button style={styles.alignSelfCenter2} success onPress={() => this.props.navigation.navigate('RegisterStepOneConnected')}>
                                 <Text style={styles.txtCadastrar} >{getText('register:btn:cadastre-se')}</Text>
                             </Button>
-                        </View>    
+                        </View>}
                     </View>
                 </Content>
             </Container>
@@ -131,13 +149,7 @@ const styles = StyleSheet.create({
 
   const mapDispatch = dispatch => {
     return {
-      //setName: (name) => dispatch(setName(name)),
-      //setBirthDate: (birthDate) => dispatch(setBirthDate(birthDate)),
-      //setSex: (sex) => dispatch(setSex(sex)),
-      //setEmail: (email) => dispatch(setEmail(email)),
-      //setPassword: (password) => dispatch(setPassword(password)),
-      //setConfirmationPassword: (confirmationPassword) => dispatch(setConfirmationPassword(confirmationPassword)),
-      //setErrorMessage: (errorMessage) => dispatch(setErrorMessage(errorMessage)),
+      authenticate: user => dispatch(authenticate(user)),
     }
   }
 

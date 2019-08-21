@@ -5,7 +5,7 @@ import { RegisterStepTwoConnected } from '../ui/screens/RegisterStepTwo';
 import { TabNavigatorConnect } from './TabNavigator/TabNavigator'
 import Cart from '../ui/screens/Cart';
 import Products from '../ui/screens/Products';
-import LoginConnected from '../ui/screens/Login';
+import { LoginConnected } from '../ui/screens/Login';
 import { NoticiasConnected } from '../ui/screens/Noticias';
 import User from '../ui/screens/User';
 import NewPost from '../ui/screens/NewPost';
@@ -57,6 +57,8 @@ const AppNavigator = createStackNavigator(
   transitionConfig: (nav) => handleCustomTransition(nav)
 }
 );
+
+
 
 const Navigator = createAppContainer(AppNavigator);
 

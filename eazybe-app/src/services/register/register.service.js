@@ -9,6 +9,10 @@ class RegisterService {
   createUser(user) {
     return axios.post(`${urls.API_PROD}/users`, user)
   }
+
+  authenticateUser(user) {
+    return axios.post(`${urls.API_PROD}/authenticate`, user)
+  }
 }
 
 export default RegisterService;

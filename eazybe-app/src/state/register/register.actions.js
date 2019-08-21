@@ -17,7 +17,8 @@ import {
   SET_LOADING,
   SET_INVALID_CEP,
   REGISTER_USER,
-  FETCH_CEP_VIA_CEP
+  FETCH_CEP_VIA_CEP,
+  AUTHENTICATE
 } from './register.actionTypes';
 
 const setName = (name) => {
@@ -110,6 +111,13 @@ const fetchCep = (cep) => {
   }
 }
 
+const authenticate = user => {
+  return {
+    type: AUTHENTICATE,
+    user
+  }
+}
+
 export {
   setName,
   setBirthDate,
@@ -123,5 +131,6 @@ export {
   setLoading,
   setInvalidCep,
   registerUser,
-  fetchCep
+  fetchCep,
+  authenticate
 };

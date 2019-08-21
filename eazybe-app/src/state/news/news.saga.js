@@ -36,7 +36,6 @@ export function* _fetchNews() {
 
   yield put(newsFeedLoading(true));
   const posts = yield call(getPosts, page);
-  Reactotron.log(Array.isArray(posts.items))
   yield put(pushData(posts.items));
   yield put(addPage());
   yield put(newsFeedLoading(false));

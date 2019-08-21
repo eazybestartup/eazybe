@@ -1,4 +1,4 @@
 export const urls = {
   cep: 'https://viacep.com.br/ws',
-  API_PROD: 'http://api.eazybe.com:30000',
+  API_PROD: 'https://eazybe-api.herokuapp.com',
 };

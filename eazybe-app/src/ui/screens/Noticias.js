@@ -10,6 +10,7 @@ import { ScrollView, Text, StyleSheet, View, FlatList, ActivityIndicator } from 
 import ButtonNewPost from '../components/noticias/ButtonNewPost/ButtonNewPost';
 import { connect } from 'react-redux';
 import { withNavigation } from 'react-navigation'
+import PostCard from '../components/feed/post-card.component'
 
 const styles = StyleSheet.create({
   listItem: {
@@ -71,6 +72,7 @@ class Noticias extends Component {
     return (
       <View style={styles.flex1}>
         <View style={styles.flex11}>
+          <PostCard />
           <FlatList
             style={styles.marginTopFlatList}
             contentContainerStyle={styles.list}

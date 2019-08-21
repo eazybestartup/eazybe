@@ -7,10 +7,12 @@ import { reactotronRedux } from 'reactotron-redux';
 import moment from 'moment';
 import Navigator from './src/navigator/index';
 import rootReducer from './src/state/main';
-
+import { GlobalAlert } from './src/ui/components/common/global-alert.component'
+import NavigationService from './src/services/navigation/navigation.service'
 // sagas
 import { newsSaga } from './src/state/news/news.saga'
 import { registerSaga } from './src/state/register/register.saga'
+import { userSaga } from './src/state/user/user.saga';
 
 if (__DEV__) {
   Reactotron
@@ -26,12 +28,16 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(rootReducer, compose(Reactotron.createEnhancer(), applyMiddleware(sagaMiddleware)))
 sagaMiddleware.run(newsSaga)
 sagaMiddleware.run(registerSaga)
+sagaMiddleware.run(userSaga)
 
 export default class App extends React.Component {
   render() {
     return(
       <Provider store={store}> 
-        <Navigator />
+        <Navigator ref={navigatorRef => {
+          NavigationService.setTopLevelNavigator(navigatorRef);
+        }} />
+        <GlobalAlert />
       </Provider>
     );
   }
