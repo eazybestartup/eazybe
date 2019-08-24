@@ -2,7 +2,17 @@ import React, { Component } from 'react';
 import { View, Text, Stylesheet } from 'react-native';
 import ImgPerfil from '../components/Perfil/imgPerfil';
 import { Container, Content, Form, Button } from 'native-base';
-import colors from '../colors/colors.enum'
+import colors from '../colors/colors.enum';
+import InputWithLabel from '../components/register/InputWithLabel/InputWithLabel';
+import ErrorMessage from '../components/register/ErrorMessage/ErrorMessage';
+import getText from '../../enums/dictionary/dictionary';
+import { connect } from 'react-redux';
+import {
+  setEmail,
+  setErrorMessage
+} from '../../state/register/register.actions';
+import { isEmailValid } from '../../utils/validate';
+
 
 const styles = {
   flex1: { flex: 1, backgroundColor: colors.bgContent },
@@ -30,11 +40,16 @@ export default class Usuário extends Component {
     super(props);
     this.state = {
     };
+    this.navigateToUser = this.navigateToUser.bind(this);
   }
 
   static navigationOptions = {
     //headerLeft: null,
     //title: 'Usuário',
+  }
+
+  navigateToUser = () => {
+      return this.props.navigation.navigate('User');
   }
 
   render() {
@@ -54,7 +69,7 @@ export default class Usuário extends Component {
               <InputWithLabel label='register:label:number'/>
               <InputWithLabel label='register:label:complement' />
               <Text>{getText('')}</Text>
-              <Button primary style={styles.bntSalvar} >
+              <Button primary style={styles.bntSalvar} onPress={this.navigateToUser}>
                 <Text style={styles.txtSalvar}>{getText('register:btn:salvarDados')}</Text>
               </Button>
             </View>
@@ -64,3 +79,13 @@ export default class Usuário extends Component {
     );
   }
 }
+
+const mapState = state => ({
+})
+
+const mapDispatch = dispatch => {
+  return {
+  }
+}
+
+export const UsuárioConnected = connect(mapState, mapDispatch)(Usuário);
