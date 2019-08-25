@@ -1,3 +1,8 @@
+import {
+    SET_EMAIL,
+    SET_ERROR_MESSAGE,
+  } from './user.actionTypes'; 
+
 const initialState = {
     nome: 'Leonardo Oliveira',
     rua: 'Rua Palhoça, ',
@@ -6,14 +11,19 @@ const initialState = {
     bairro: 'Jardim Record, ',
     cidade: 'Taboão da Serra',
     estado: '/SP',
-    mail: 'Leonardo565@gmail.com'
+    mail: 'Leonardo565@gmail.com',
+    errorMessage: '',
 
 }
-const userReducer = (state = [], action) =>{
-    if(state.length == 0) {
-        return initialState;
+const userReducer = (state = initialState, action) =>{
+    switch (action.type) {
+        case SET_EMAIL:
+          return { ...state, email: action.email }
+        case SET_ERROR_MESSAGE:
+          return { ...state, errorMessage: action.errorMessage }
+        default:
+          return state;
     }
-    return state;
 };
 
 export default userReducer;

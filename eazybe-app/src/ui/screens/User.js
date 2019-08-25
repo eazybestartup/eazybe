@@ -13,7 +13,7 @@ const styles = {
   flex6: { flex: 6 }
 }
 
-export default class Usuário extends Component {
+export default class Usuario extends Component {
   constructor(props) {
     super(props);
     this.state = {
