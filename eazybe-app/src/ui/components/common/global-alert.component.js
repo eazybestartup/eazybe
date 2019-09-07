@@ -14,6 +14,15 @@ export class GlobalAlert extends PureComponent {
     EventEmitter.emit(GlobalAlert.GLOBAL_ALERT_EVENT, data)
   }
 
+  static errorMessage(title, message) {
+    return GlobalAlert.show({
+      title,
+      message,
+      confirmText: 'Ok',
+      handleConfirmation: () => {},
+    })
+  }
+
   componentDidMount() {
     EventEmitter.on(GlobalAlert.GLOBAL_ALERT_EVENT, data => {
       this.setState({ data, isVisible: true })

@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Container, Header, Content, Button } from 'native-base';
 import { Icon } from 'react-native-elements';
-import colors from '../../../colors/colors.enum'
+import colors from '../../colors/colors.enum'
 
 const styles = StyleSheet.create({
   button: {

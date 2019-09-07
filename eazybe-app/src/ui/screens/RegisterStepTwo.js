@@ -128,7 +128,6 @@ class RegisterStepTwo extends Component {
 }
 
 const mapState = state => {
-  reactotron.log(state)
   return { register: state.registerReducer }
 }
 

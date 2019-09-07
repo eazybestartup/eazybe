@@ -1,6 +1,7 @@
 import {
   SET_USER,
   GET_USER_BY_ID,
+  FINISH_GET_USER_BY_ID
 } from './user.actionTypes';
 
 const setUser = (user) => {
@@ -17,8 +18,14 @@ const getUserById = id => {
   }
 }
 
+const finishGetUserById = () => ({
+  type: FINISH_GET_USER_BY_ID
+})
+
 export {
   setUser,
   getUserById,
   GET_USER_BY_ID,
+  finishGetUserById,
+  FINISH_GET_USER_BY_ID
 };

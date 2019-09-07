@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
+import { Image, View } from 'react-native';
+import { Container, Badge, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
+import {
+  UserInfoFeed
+} from './user-info-feed.component'
 export default class PostCard extends Component {
+  
   render() {
+    const neighborhoodName = 'Bairro Santa Maria • '
     return (
       <Container>
         <Content>
@@ -10,30 +15,27 @@ export default class PostCard extends Component {
             <CardItem>
               <Left>
                 <Thumbnail source={{uri: 'https://thumbs.dreamstime.com/b/avatar-sem-cara-do-homem-de-neg%C3%B3cios-homem-no-terno-com-la%C3%A7o-azul-85824471.jpg'}} />
-                <Body>
-                  <Text>Lucas</Text>
-                  <Text note>Bairro Santa Maria</Text>
-                </Body>
+                <UserInfoFeed userName="Lucas" neighborhoodName={neighborhoodName} isAssalto={this.props.postType} />
               </Left>
             </CardItem>
             <CardItem cardBody>
-              <Image source={{uri: 'https://www.viajali.com.br/wp-content/uploads/2018/01/praia-do-gunga-1-730x730.jpg'}} style={{height: 200, width: null, flex: 1}}/>
+              <Text style={{paddingLeft: 20}}>{this.props.text}</Text>
             </CardItem>
-            <CardItem>
-              <Left>
+            <CardItem style={{ alignContent: 'space-between', borderWidth:1 }}>
+              <Left style={{flex:1}}>
                 <Button transparent>
                   <Icon active name="thumbs-up" />
-                  <Text>12 Likes</Text>
+                  <Text>12 Curtidas</Text>
                 </Button>
               </Left>
-              <Body>
+              <Body style={{flex:1}}>
                 <Button transparent>
                   <Icon active name="chatbubbles" />
-                  <Text>4 Comments</Text>
+                  <Text>4 Comentários</Text>
                 </Button>
               </Body>
               <Right>
-                <Text>11h ago</Text>
+                <Text>1h atrás</Text>
               </Right>
             </CardItem>
           </Card>

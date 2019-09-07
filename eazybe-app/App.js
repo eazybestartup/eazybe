@@ -13,6 +13,7 @@ import NavigationService from './src/services/navigation/navigation.service'
 import { newsSaga } from './src/state/news/news.saga'
 import { registerSaga } from './src/state/register/register.saga'
 import { userSaga } from './src/state/user/user.saga';
+import { postSaga } from './src/state/post/post.saga';
 
 if (__DEV__) {
   Reactotron
@@ -29,6 +30,7 @@ const store = createStore(rootReducer, compose(Reactotron.createEnhancer(), appl
 sagaMiddleware.run(newsSaga)
 sagaMiddleware.run(registerSaga)
 sagaMiddleware.run(userSaga)
+sagaMiddleware.run(postSaga)
 
 export default class App extends React.Component {
   render() {

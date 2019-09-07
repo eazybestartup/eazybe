@@ -16,25 +16,17 @@ export class ImgPefil extends Component{
                 </Button>
                 <View style={styles.alignSelfCenter}>
                     <Image source={require('../../../assets/Perfil/Avatares/AvatarMasculino4.png')} style={styles.bgImage}></Image>
-                    <TextInput style={styles.txtUserPerfil} value={this.props.nome}></TextInput>
+                    <TextInput style={styles.txtUserPerfil} value={this.props.user.full_name}></TextInput>
                 </View>
             </View>
         );
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-      nome:state.userReducer.nome,
-      rua:state.userReducer.rua,
-      num:state.userReducer.num,
-      complemento:state.userReducer.complemento,
-      bairro:state.userReducer.bairro,
-      cidade:state.userReducer.cidade,
-      estado:state.userReducer.estado
-    };
-  };
+const mapStateToProps = (state) => ({
+  user: state.userReducer
+})
   
-  const ImgPerfilConnect = connect(mapStateToProps)(ImgPefil);
+const ImgPerfilConnect = connect(mapStateToProps)(ImgPefil);
   
-  export default ImgPerfilConnect;
+export default ImgPerfilConnect;

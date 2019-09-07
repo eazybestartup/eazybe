@@ -20,6 +20,10 @@ class UserAddress {
       state: address.uf,
     }
   }
+
+  static beautifyUserAddress(street, neighborhood, city, state) {
+    return `${street}, ${neighborhood} - ${city}/${state}`
+  }
 }
 
 export default UserAddress;

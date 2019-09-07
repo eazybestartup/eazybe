@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Image, StyleSheet, Picker } from 'react-native';
 import { Container, View, Text, Textarea, Button } from 'native-base';
 import getText from '../../enums/dictionary/dictionary'
-import { Icon } from 'react-native-elements';
-import EazyBePicker from '../components/register/EazyBePicker/EazyBePicker'
+import { connect } from 'react-redux'
+import { newPost } from '../../state/post/post.actions'
 
 const styles = StyleSheet.create({
   txtNewPost:{
@@ -38,19 +38,32 @@ const styles = StyleSheet.create({
   btnPublish: { alignSelf: 'flex-end', marginRight: 10, borderRadius:4, width: 100  }
 });
 
-const userImage = require('../../assets/NewPost/anonymous.png')
+const userImage = require('../../assets/Perfil/Avatares/AvatarMasculino4.png')
 class NewPost extends Component {
   constructor(props) {
     super(props);
     this.state = {
       categories: ['Post', 'Assalto'],
-      choosenCategory: ''
+      choosenCategory: 'Post',
+      text: ''
     };
+    this.setPostText = this.setPostText.bind(this)
   }
 
   static navigationOptions = {
     headerLeft: null,
     title: 'Nova Postagem'
+  }
+  
+  setPostText = text => this.setState({ text });
+
+  newPost = () => {
+    const { newUserPost } = this.props
+    const { text, choosenCategory } = this.state
+    newUserPost({
+      text,
+      type_post: choosenCategory
+    })
   }
 
   render() {
@@ -67,7 +80,7 @@ class NewPost extends Component {
                   />
                 </View>
                 <View style={styles.flex1}>
-                  <Text style={styles.userName}>{`${getText('newPost:user-mock')}`}</Text>
+                  <Text style={styles.userName}>{`${this.props.user.full_name} `}</Text>
                 </View>
               </View>
 
@@ -77,6 +90,7 @@ class NewPost extends Component {
                   bordered
                   placeholder={`${getText("newPost:textarea:placeholder")}`}
                   style={[styles.txtNewPost,styles.shadow]}
+                  onChangeText={text => this.setPostText(text)}
                   />
               </View>
             </View>
@@ -88,7 +102,7 @@ class NewPost extends Component {
                 </Picker>
               </View>
               <View style={styles.vwBtnPublish}>
-                <Button style={styles.btnPublish} onPress={() => this.props.navigation.navigate('NoticiasConnected')}>
+                <Button style={styles.btnPublish} onPress={() => this.newPost()}>
                   <Text>{`${getText("newPost:label:publish")}`}</Text>
                 </Button>
               </View>
@@ -101,4 +115,12 @@ class NewPost extends Component {
   }
 }
 
-export default NewPost;
+const mapState = (state) => ({
+  user: state.userReducer
+})
+
+const mapDispatch = dispatch => ({
+  newUserPost: post => dispatch(newPost(post))
+})
+
+export default NewPostConnected = connect(mapState, mapDispatch)(NewPost);

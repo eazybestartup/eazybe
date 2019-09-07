@@ -19,7 +19,8 @@ class User {
       email: user.email,
       password: user.password,
       password_confirmation: user.confirmationPassword,
-      birth_date: formatDate(user.birthDate),
+      file_name: null,
+	    birth_date: formatDate(user.birthDate),
       ...UserAddress.normalizeAddress(user.userAddress)
     }
   }

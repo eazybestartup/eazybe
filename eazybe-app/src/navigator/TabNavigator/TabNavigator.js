@@ -9,17 +9,13 @@ import { connect } from 'react-redux';
 import Reactotron from 'reactotron-react-native';
 import { changeMenuTabMenuBottom } from '../../state/menu/menu.actions'
 import colors from '../../ui/colors/colors.enum';
+import { NoticiasConnected } from '../../ui/screens/Noticias'
+import User from '../../ui/screens/User';
 
 class TabNavigator extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  componentDidUpdate() {
-    const { menu } = this.props;
-    if (menu.lastTab !== menu.activeTab) {
-      this.props.navigation.navigate(menu.tabs[menu.activeTab].key);
-    }
+    this.defineScreen = this.defineScreen.bind(this)
   }
 
   renderIcon = icon => ({ isActive }) => (
@@ -30,7 +26,7 @@ class TabNavigator extends React.Component {
     const { menu } = this.props;
     return (
       <FullTab
-        isActive={false}
+        isActive={isActive}
         key={tab.key}
         label={tab.label}
         renderIcon={this.renderIcon(tab.icon)}
@@ -43,9 +39,24 @@ class TabNavigator extends React.Component {
     changeTab(newTab.key);
   }
 
+  defineScreen = () => {
+    const { activeTab } = this.props.menu
+    switch(activeTab) {
+      case 0:
+        return <NoticiasConnected />
+      case 1:
+        return <User />
+      default:
+        return <NoticiasConnected />
+    }
+  }
+
   render() {
     return (
-      <View>
+      <View style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
+          {this.defineScreen()}
+        </View>
         <BottomNavigation
           onTabPress={this.switchScreen}
           renderTab={this.renderTab}

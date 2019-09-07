@@ -2,7 +2,8 @@ import {
   NEWS_FEED_LOADING,
   ADD_PAGE,
   PUSH_DATA,
-  FETCH_NEWS
+  FETCH_NEWS,
+  RESET_FEED
 } from './news.actionTypes';
 
 const newsFeedLoading = (loading) => {
@@ -31,9 +32,18 @@ const fetchNews = () => {
   }
 }
 
+const resetFeed = () => {
+  return {
+    type: RESET_FEED
+  }
+}
+
 export {
   newsFeedLoading,
+  NEWS_FEED_LOADING,
+  RESET_FEED,
   addPage,
   pushData,
-  fetchNews
+  fetchNews,
+  resetFeed
 };

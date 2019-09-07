@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { TabNavigatorConnect } from '../../navigator/TabNavigator/TabNavigator';
 import colors from '../colors/colors.enum';
-import ImgPerfil from '../components/Perfil/imgPerfil';
-import InfoUser from '../components/Perfil/infoUser';
+import ImgPerfil from '../components/Perfil/img-perfil.component';
+import InfoUser from '../components/Perfil/info-user.component';
 import { Button } from 'native-base';
 import getText from '../../enums/dictionary/dictionary'
 
@@ -13,7 +13,7 @@ const styles = {
   flex6: { flex: 6 }
 }
 
-export default class Usuário extends Component {
+export default class User extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,12 +38,6 @@ export default class Usuário extends Component {
         </View>
         <View style={styles.flex6}>
           <InfoUser></InfoUser>
-          <Button primary style={estilo.bntEdit} onPress={this.navigateToEditUser}>
-            <Text style={estilo.bntTxtEditar}>{getText('register:btn:editarDados')}</Text>
-          </Button>
-        </View>
-        <View style={styles.flex1}>
-          <TabNavigatorConnect />
         </View>
       </View>
     );
@@ -54,8 +48,6 @@ const estilo = StyleSheet.create({
     width: 109,
     height:30,
     position: 'absolute',
-    marginTop: 210,
-    marginLeft: 285
   },
   bntTxtEditar:{
     color: colors.white,

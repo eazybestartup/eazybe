@@ -1,4 +1,4 @@
-import { takeLatest, select, call, put, all } from 'redux-saga/effects';
+import { takeLatest, select, call, put, all, take } from 'redux-saga/effects';
 import { NavigationActions } from 'react-navigation'
 import {
   setUserAddress,
@@ -8,7 +8,8 @@ import {
 } from './register.actions';
 
 import {
-  getUserById
+  getUserById,
+  FINISH_GET_USER_BY_ID
 } from '../user/user.actions';
 
 import { setUser } from '../user/user.actions'
@@ -20,6 +21,8 @@ import {
   REGISTER_USER,
   AUTHENTICATE
 } from './register.actionTypes';
+
+import { resetFeed } from '../news/news.actions'
 
 import RegisterService from '../../services/register/register.service'
 import getText from '../../enums/dictionary/dictionary';
@@ -87,9 +90,7 @@ export function* _registerUser() {
   try {
     const { registerReducer } = yield select();
     const normalizedUser = User.normalizeUser(registerReducer);
-    Reactotron.log(normalizedUser)
     const { res, err } = yield call(registerUser, normalizedUser);
-    Reactotron.log({ res, err })
     if(res.data.status === 500 || err) {
       yield put(setLoading(false));
       return GlobalAlert.show({
@@ -101,9 +102,9 @@ export function* _registerUser() {
     }
 
     yield put(setUser(res))
-    yield NavigationService.navigate('NoticiasConnected');
+    Reactotron.log('USER', res)
+    yield call(_auth, { user: normalizedUser })
   } catch(e) {
-    Reactotron.log('erro desconhecido', e)
     yield put(setErrorMessage(getText('register:label:unknown-error')));
   } finally {
     yield put(setLoading(false));
@@ -113,6 +114,7 @@ export function* _registerUser() {
 export function* _auth({ user }) {
   yield put(setLoading(true));
   try {
+    Reactotron.log('auth', user)
     const { res, err } = yield call(authenticateUser, user)
     if(err) {
       yield put(setLoading(false));
@@ -125,12 +127,13 @@ export function* _auth({ user }) {
     }
   
     if(res.data) {
+      yield put(resetFeed())
       yield call(StorageService.set, 'auth_token', res.data.auth_token)
-      Reactotron.log(decode)
       const userId = yield decode(res.data.auth_token);
       yield put(getUserById(userId));
+      yield take(FINISH_GET_USER_BY_ID)
       yield put(setLoading(false));
-      yield NavigationService.navigate('NoticiasConnected');
+      yield NavigationService.navigate('TabNavigatorConnect');
     }
   } finally {
     yield put(setLoading(false));
