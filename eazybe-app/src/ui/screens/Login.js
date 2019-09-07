@@ -23,7 +23,7 @@ class Login extends Component{
     }
 
     navigateTonoticias = () => {
-        return this.props.navigation.navigate('NoticiasConnected')
+        return this.props.navigation.navigate('TabNavigatorConnect')
     }
 
     setEmail = email => this.setState({ email });
@@ -77,11 +77,11 @@ const styles = StyleSheet.create({
     flex2: { 
         flex: 2,
         paddingLeft: 25,
-        backgroundColor: "#7A6FBC",
+        backgroundColor: colors.purpleBackgroundLight,
         marginTop: 20,
         elevation: 10,
         borderWidth: 2,
-        borderColor: "#8276CA",
+        borderColor: colors.purpleBackgroundBorder,
         borderRadius: 6 },
     flex3: { flex: 3 },
     alignSelfCenter1: { 
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     textoLogo1:{
         flex:2,
         fontSize: 48,
-        color: "#FFFFFF",
+        color: colors.white,
         marginTop: 15,
         textAlign:'center',
         textShadowColor: colors.black,
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     textoLogo2:{
         flex:3,
         fontSize: 20,
-        color: "#C4C4C4",
+        color: colors.Logo,
         marginTop: 2,
         textAlign:'center',
         textShadowColor: colors.black,
@@ -136,17 +136,16 @@ const styles = StyleSheet.create({
         paddingLeft:73
     },
     txtCadastrar:{
-        color: "#FFFFFF",
+        color: colors.white,
         fontSize: 20,
         fontWeight: 'bold',
         paddingLeft:50
     }
   });
 
-  const mapState = state => ({
+  const mapState = state => ({ 
     register: state.registerReducer
   })
-
   const mapDispatch = dispatch => {
     return {
       authenticate: user => dispatch(authenticate(user)),

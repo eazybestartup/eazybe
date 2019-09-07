@@ -4,6 +4,7 @@ import registerReducer from '../register/register.reducer';
 import menuReducer from '../menu/menu.reducer';
 import newsReducer from '../news/news.reducer';
 import userReducer from '../user/user.reducer';
+import postReducer from '../post/post.reducer'
 
 // aqui combinamos todos os reducers do projeto para criar um reducer master e aí passar pra store
 // no arquivo App.js
@@ -13,5 +14,6 @@ export default combineReducers({
   registerReducer,
   menuReducer,
   newsReducer,
-  userReducer
+  userReducer,
+  postReducer
 });
