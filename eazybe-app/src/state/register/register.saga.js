@@ -12,6 +12,8 @@ import {
   FINISH_GET_USER_BY_ID
 } from '../user/user.actions';
 
+import { userIsTutor } from '../menu/menu.actions'
+
 import { setUser } from '../user/user.actions'
 import UserAddress from '../../models/UserAddress'
 import User from '../../models/User'
@@ -131,7 +133,11 @@ export function* _auth({ user }) {
       yield call(StorageService.set, 'auth_token', res.data.auth_token)
       const userId = yield decode(res.data.auth_token);
       yield put(getUserById(userId));
-      yield take(FINISH_GET_USER_BY_ID)
+      yield take(FINISH_GET_USER_BY_ID);
+      const { userReducer } = yield select();
+      if(userReducer.tutor) {
+        yield put(userIsTutor())
+      }
       yield put(setLoading(false));
       yield NavigationService.navigate('TabNavigatorConnect');
     }

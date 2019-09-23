@@ -8,6 +8,7 @@ class NoticiasService {
     const header = await HttpUtils.getAuthHeader();
     return axios.get(`${urls.API_PROD}/rede/social/${districtId}`, header);
   }
+
 }
 
 export default NoticiasService;

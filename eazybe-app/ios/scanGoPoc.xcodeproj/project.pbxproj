@@ -77,6 +77,7 @@
 		BCC9178552064B5FB589E8CB /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF44D1AFEC9E4D34A5C87953 /* SimpleLineIcons.ttf */; };
 		A8FDCC98DEF149D8B67FD51C /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65828F0A99B74524B464D9B8 /* Zocial.ttf */; };
 		8D396DDE3E5A46C6ADE88ECB /* libRNCAsyncStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EDA7709CB6B46E6B913A447 /* libRNCAsyncStorage.a */; };
+		A697EB36A9624946B4CD7DC3 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E555E6FFB0C043B49BD60053 /* Fontisto.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -425,6 +426,7 @@
 		65828F0A99B74524B464D9B8 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		09BCC41CDE484EB6912C5CB3 /* RNCAsyncStorage.xcodeproj */ = {isa = PBXFileReference; name = "RNCAsyncStorage.xcodeproj"; path = "../node_modules/@react-native-community/async-storage/ios/RNCAsyncStorage.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		8EDA7709CB6B46E6B913A447 /* libRNCAsyncStorage.a */ = {isa = PBXFileReference; name = "libRNCAsyncStorage.a"; path = "libRNCAsyncStorage.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		E555E6FFB0C043B49BD60053 /* Fontisto.ttf */ = {isa = PBXFileReference; name = "Fontisto.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -734,6 +736,7 @@
 				CF44344734524B67881C841C /* rubicon-icon-font.ttf */,
 				AF44D1AFEC9E4D34A5C87953 /* SimpleLineIcons.ttf */,
 				65828F0A99B74524B464D9B8 /* Zocial.ttf */,
+				E555E6FFB0C043B49BD60053 /* Fontisto.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1218,6 +1221,7 @@
 				856C38F9CAA742CCA972E1D6 /* rubicon-icon-font.ttf in Resources */,
 				BCC9178552064B5FB589E8CB /* SimpleLineIcons.ttf in Resources */,
 				A8FDCC98DEF149D8B67FD51C /* Zocial.ttf in Resources */,
+				A697EB36A9624946B4CD7DC3 /* Fontisto.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

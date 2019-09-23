@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, StyleSheet, ImageBackground} from 'react-native';
+import {View, Text, StyleSheet, Image } from 'react-native';
 import { Container, Content, Button, Spinner } from 'native-base';
 import InputWithLabel from '../components/register/InputWithLabel/InputWithLabel';
 import colors from '../colors/colors.enum';
@@ -42,13 +42,7 @@ class Login extends Component{
         return(
             <Container style={styles.container}>
                 <Content>
-                    <View>
-                       <Text style = {styles.textoLogo1}>Eazybe</Text>
-                    </View>
-                    <View>
-                        <Text style = {styles.textoLogo2}>O seu bairro em um toque</Text>
-                    </View>
-                    <ImageBackground source={require('../../assets/Login/logotipo.png')} style={styles.bgImagem}></ImageBackground>
+                <Image source={require('../../assets/Login/logo.png')} style={styles.bgImagem} />
                     <View style = {styles.flex2}>
                         <InputWithLabel onChangeText={email => this.setEmail(email)} label='register:label:email' placeholder='register:placeholder:email'/>
                         <InputWithLabel secureTextEntry={true} onChangeText={password => this.setPassword(password)} label='register:label:password' placeholder='register:placeholder:password'/>
@@ -70,76 +64,59 @@ class Login extends Component{
 }
 const styles = StyleSheet.create({
     container: { 
+        display: 'flex',
         flex:1, 
-        backgroundColor: colors.purpleBackground 
+        backgroundColor: colors.purpleBackground,
     },
     vwPickers: { flexDirection: 'row' },
     flex2: { 
         flex: 2,
         paddingLeft: 25,
-        backgroundColor: colors.purpleBackgroundLight,
-        marginTop: 20,
-        elevation: 10,
-        borderWidth: 2,
-        borderColor: colors.purpleBackgroundBorder,
-        borderRadius: 6 },
+    },
+    flex10: { flex: 10, borderWidth: 1, alignItems: 'center', height: '100%' }, 
     flex3: { flex: 3 },
-    alignSelfCenter1: { 
-        alignSelf:'center', 
+    alignSelfCenter1: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignSelf:'center',
         width: 200, 
         height: 50,
         backgroundColor: colors.white,
-        marginTop: 20,
+        fontFamily: 'Comfortaa'
      },
      alignSelfCenter2: { 
+        display: 'flex',
+        justifyContent: 'center',
         alignSelf:'center', 
         width: 200, 
         height: 50,
         backgroundColor: colors.navyBlue,
         marginTop: 10,
-        marginBottom:25
+        marginBottom:25,
+        fontFamily: 'Comfortaa'
      },
     errorMessage: {
       color: colors.yellow,
       fontWeight: 'bold',
-      textAlign: 'center'
-    },
-    textoLogo1:{
-        flex:2,
-        fontSize: 48,
-        color: colors.white,
-        marginTop: 15,
-        textAlign:'center',
-        textShadowColor: colors.black,
-        textShadowOffset: {width: 3, height: 3},
-        textShadowRadius: 3.84        
-    },
-    textoLogo2:{
-        flex:3,
-        fontSize: 20,
-        color: colors.Logo,
-        marginTop: 2,
-        textAlign:'center',
-        textShadowColor: colors.black,
-        textShadowOffset: {width: 3, height: 3},
-        textShadowRadius: 3.84 
+      textAlign: 'center',
+      fontFamily: 'Comfortaa'
     },
     bgImagem:{
-        marginTop: 25,
-        width: null,
-        height: 125
+        alignSelf: 'center',
+        width: 200,
+        height: 300,
+        resizeMode: 'stretch'
     },
     txtLogin:{
         color: colors.navyBlue,
         fontSize: 20,
-        fontWeight: 'bold',
-        paddingLeft:73
+        textAlign: 'center',
+        fontFamily: 'Comfortaa'
     },
     txtCadastrar:{
         color: colors.white,
         fontSize: 20,
-        fontWeight: 'bold',
-        paddingLeft:50
+        fontFamily: 'Comfortaa'
     }
   });
 

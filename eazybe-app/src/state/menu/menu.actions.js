@@ -6,6 +6,7 @@
 
 import {
   CHANGE_TAB_MENU_BOTTOM,
+  USER_IS_TUTOR
 } from './menu.actionTypes';
 
 const changeMenuTabMenuBottom = (tab) => {
@@ -15,7 +16,13 @@ const changeMenuTabMenuBottom = (tab) => {
   };
 };
 
+const userIsTutor = () => {
+  return {
+    type: USER_IS_TUTOR,
+  }
+}
 
 export {
   changeMenuTabMenuBottom,
+  userIsTutor
 };

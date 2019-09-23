@@ -1,13 +1,19 @@
-const NEWS_FEED_LOADING = 'NEWS_FEED_LOADING';
-const ADD_PAGE = 'ADD_PAGE';
-const PUSH_DATA = 'PUSH_DATA';
-const FETCH_NEWS = 'FETCH_NEWS'
-const RESET_FEED = 'RESET_FEED'
-
+const prefix = 'NOTICIAS'
+const NEWS_FEED_LOADING = `${prefix}.NEWS_FEED_LOADING`;
+const NEWS_ASSALTO_LOADING = `${prefix}.NEWS_ASSALTO_LOADING`;
+const ADD_PAGE = `${prefix}.ADD_PAGE`;
+const PUSH_DATA = `${prefix}.PUSH_DATA`;
+const FETCH_NEWS = `${prefix}.FETCH_NEWS`;
+const FETCH_ASSALTOS = `${prefix}.FETCH_ASSALTOS`;
+const RESET_FEED = `${prefix}.RESET_FEED`;
+const SET_ASSALTOS = `${prefix}.SET_ASSALTOS`
 export {
   NEWS_FEED_LOADING,
   ADD_PAGE,
   PUSH_DATA,
   FETCH_NEWS,
-  RESET_FEED
+  RESET_FEED,
+  NEWS_ASSALTO_LOADING,
+  FETCH_ASSALTOS,
+  SET_ASSALTOS
 };

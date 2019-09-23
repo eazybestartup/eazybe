@@ -1,14 +1,24 @@
 import {
   NEWS_FEED_LOADING,
+  NEWS_ASSALTO_LOADING,
   ADD_PAGE,
   PUSH_DATA,
   FETCH_NEWS,
-  RESET_FEED
+  FETCH_ASSALTOS,
+  RESET_FEED,
+  SET_ASSALTOS
 } from './news.actionTypes';
 
 const newsFeedLoading = (loading) => {
   return {
     type: NEWS_FEED_LOADING,
+    loading
+  };
+};
+
+const newsAssaltoLoading = (loading) => {
+  return {
+    type: NEWS_ASSALTO_LOADING,
     loading
   };
 };
@@ -26,9 +36,22 @@ const pushData = (data) => {
   }
 }
 
+const setAssaltos = (data) => {
+  return {
+    type: SET_ASSALTOS,
+    payload: data
+  }
+}
+
 const fetchNews = () => {
   return {
     type: FETCH_NEWS,
+  }
+}
+
+const fetchAssaltos = () => {
+  return {
+    type: FETCH_ASSALTOS,
   }
 }
 
@@ -40,10 +63,15 @@ const resetFeed = () => {
 
 export {
   newsFeedLoading,
+  newsAssaltoLoading,
   NEWS_FEED_LOADING,
+  NEWS_ASSALTO_LOADING,
   RESET_FEED,
+  FETCH_ASSALTOS,
+  setAssaltos,
   addPage,
   pushData,
   fetchNews,
-  resetFeed
+  fetchAssaltos,
+  resetFeed,
 };

@@ -46,13 +46,9 @@ const AppNavigator = createStackNavigator(
 },
 {
   initialRouteName: 'LoginConnected',
-  defaultNavigationOptions: {
-    headerStyle: {
-      backgroundColor: colors.navyBlue,
-      textAlign: 'center',
-    },
-    headerTintColor: colors.white,
-    headerTitleStyle: { textAlign:'center', alignSelf:'center', flex:1, }
+  headerMode: 'none',
+  navigationOptions: {
+      headerVisible: false,
   },
   transitionConfig: (nav) => handleCustomTransition(nav)
 }

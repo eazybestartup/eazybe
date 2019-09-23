@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
 import {
-  fetchNews
+  fetchAssaltos
 } from '../../state/news/news.actions';
 import { Text, StyleSheet, View, FlatList } from 'react-native';
-import ButtonNewPost from '../components/noticias/button-new-post.component'
 import { connect } from 'react-redux';
-import { withNavigation } from 'react-navigation'
-import PostCard from '../components/feed/post-card.component'
+
+import AssaltoReport from '../components/tutor-area/assalto-report.component'
 import FeedHeader from '../components/feed/feed-header.component'
-import { Spinner } from 'native-base';
+
+import { Spinner } from 'native-base'
 
 const styles = StyleSheet.create({
   listItem: {
-    height: 230,
+    height: 170,
     width: '100%',
+    marginBottom: 100
   },
   post: {
     width: '100%',
   },
   flex1: { flex: 1, padding: 20 },
   vwFlatList: { flex: 11, height: '100%' },
-  btnNewPost: { position: 'absolute', right: 0, bottom: 40 },
 });
 
-class Noticias extends Component {
+class TutorArea extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,21 +32,14 @@ class Noticias extends Component {
     this.refresh = this.refresh.bind(this)
   }
 
-  static navigationOptions = {
-    title: 'Notícias',
-    header: null,
-    headerMode: 'none',
-    headerLeft: null,
+  componentDidMount() {
+    this.props.fetchAssaltos();
   }
 
-  componentDidMount() {
-    this.props.fetchNews();
-  }
-  
   renderItem = ({ item }) => {
     return (
       <View style={styles.listItem}>
-        <PostCard 
+        <AssaltoReport 
           style={styles.post}
           post={item}
           />
@@ -55,26 +48,27 @@ class Noticias extends Component {
   }
 
   refresh = () => {
-    const { fetchNews } = this.props
+    const { fetchAssaltos } = this.props
     this.setState({ refreshing: true })
-    fetchNews()
+    fetchAssaltos()
     this.setState({ refreshing: false })
   }
 
   render() {
-    const { news, loading, user } = this.props
+    const { news, loading } = this.props
     const { refreshing } = this.state
+    const assaltosLength = news.dataAssalto && news.dataAssalto.length
     return (
       <View style={styles.flex1}>
-        <FeedHeader 
-          title={`olá, ${user.full_name}!`}
-          titleColor='#EF5B5C'
-          phrase={`Descubra o que há de novo em ${user.district.neighborhood}`}
-        />
+        {assaltosLength ? <FeedHeader 
+          title={`àrea do tutor`}
+          titleColor='#679BC8'
+          phrase={`Você possui ${assaltosLength} ${assaltosLength > 1 ? 'novas notificações' : 'nova notificação' } de perigo`}
+        /> : null}
         <View style={styles.vwFlatList}>
           {loading ? <Spinner color='yellow' /> : 
           <FlatList
-            data={news.data}
+            data={news.dataAssalto}
             renderItem={this.renderItem}
             keyExtractor={item => `${item.id}`}
             onRefresh={() => this.refresh()}
@@ -83,24 +77,20 @@ class Noticias extends Component {
             showsVerticalScrollIndicator={false}
           />}
         </View>
-        <View style={styles.btnNewPost}>
-          <ButtonNewPost onPress={() => this.props.navigation.navigate('NewPostConnected')} />
-        </View>
       </View>
-    )
+    );
   }
 }
 
-const mapState = ({ newsReducer, userReducer }) => {
+const mapState = ({ newsReducer }) => {
   return {
-    news: newsReducer,
-    user: userReducer
+    news: newsReducer
   }
 }
 const mapDispatch = dispatch => {
   return {
-    fetchNews: () => dispatch(fetchNews())
+    fetchAssaltos: () => dispatch(fetchAssaltos())
   }
 }
 
-export const NoticiasConnected = connect(mapState, mapDispatch)(withNavigation(Noticias))
+export const TutorAreaConnected = connect(mapState, mapDispatch)(TutorArea)

@@ -8,3 +8,4 @@ export const equalsPassword = (password, confirmPassword) => password === confir
 export const minLenPassword = (password) => password.length >= MIN_LEN_PASSWORD;
 export const minLenUsername = (name) => name.length >= MIN_LEN_USER_NAME;
 export const formatDate = date => moment(date).locale('pt-br').format('DD/MM/YYYY');
+export const plural = (num, text) => `${num > 1 ? `${num} ${text}s` : `${num} ${text}`} `

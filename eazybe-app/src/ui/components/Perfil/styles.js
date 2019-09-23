@@ -4,7 +4,6 @@ import colors from '../../colors/colors.enum'
 export const styles = StyleSheet.create({
     areaImgPerfil: {
         height: 180,
-        backgroundColor: colors.bgContent
     },
     bgImage:{
         width: 148,
@@ -18,14 +17,14 @@ export const styles = StyleSheet.create({
         marginEnd: 5
     },
     txtImgPerfil: {
-        fontWeight: 'bold',
+        fontFamily: 'Comfortaa',
         fontSize: 18,
         color: colors.black
     },
     txtUserPerfil:{
         color: colors.black,
         fontSize: 20,
-        fontWeight: 'bold',
+        fontFamily: 'Comfortaa',
         textAlign: 'center',
     },
     alignSelfEnd:{
@@ -39,12 +38,11 @@ export const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     userInfo:{
-        backgroundColor: colors.bgdadosUser,
         height: 240,
         marginTop: 10
     },
     txtDados:{
-        fontWeight: 'bold',
+        fontFamily: 'Comfortaa',
         fontSize: 18,
         textAlign: 'left',
         paddingLeft: 10,
@@ -72,7 +70,7 @@ export const styles = StyleSheet.create({
     txtEnd:{
         marginTop: 10,
         color: colors.black,
-        fontWeight: 'bold',
+        fontFamily: 'Comfortaa',
         fontSize: 18,
         textAlignVertical:'top',
         width: 300

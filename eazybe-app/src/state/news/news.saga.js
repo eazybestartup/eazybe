@@ -1,16 +1,20 @@
-import { takeLatest, select, call, put, fork, delay } from 'redux-saga/effects';
+import { takeLatest, select, call, put, fork, delay, all } from 'redux-saga/effects';
 import {
   newsFeedLoading,
+  newsAssaltoLoading,
   addPage,
   pushData,
-  fetchNews
+  setAssaltos,
+  fetchNews,
 } from './news.actions';
 
 import {
   NEWS_FEED_LOADING,
   ADD_PAGE,
   PUSH_DATA,
-  FETCH_NEWS
+  FETCH_NEWS,
+  FETCH_ASSALTOS,
+  SET_ASSALTOS
 } from './news.actionTypes';
 import NoticiasService from '../../services/noticias/noticias.service'
 import { GlobalAlert } from '../../ui/components/common/global-alert.component'
@@ -35,33 +39,73 @@ function getUserFeed(districtId) {
 }
 
 export function* _fetchNews() {
-  // get Reducer
+
+  try {
+    const { userReducer, newsReducer } = yield select();
+    const { loading, page } = newsReducer;
+  
+    if (loading) {
+      return;
+    }
+  
+    if(!userReducer.district) {
+      return
+    }
+    yield put(newsFeedLoading(true));
+    yield delay(1000)
+    const { err, res } = yield call(getUserFeed, userReducer.district.id);
+    
+    if (err) {
+      return GlobalAlert.errorMessage('Erro!', 'Erro ao recuperar as notícias do bairro, tente novamente!')
+    }
+  
+    if(res.data) {
+      yield put(pushData(res.data.post)); 
+    }
+  } catch(e) {
+    Reactotron.log('houve um erro', e)
+    GlobalAlert.errorMessage('Ops!', 'Ocorreu um erro desconhecido o feed do bairro!')
+  } finally {
+    return yield put(newsFeedLoading(false));
+  }
+}
+
+export function* _fetchAssaltos() { 
+ try {
   const { userReducer, newsReducer } = yield select();
-  //destructuring assignment on Reducer
-  const { loading, page } = newsReducer;
+  const { loading } = newsReducer;
 
   if (loading) {
     return;
   }
 
-  yield put(newsFeedLoading(true));
   if(!userReducer.district) {
     return
   }
-
+  yield put(newsAssaltoLoading(true))
   yield delay(1000)
   const { err, res } = yield call(getUserFeed, userReducer.district.id);
+
   if (err) {
-    return GlobalAlert.errorMessage('Erro!', 'Erro ao recuperar as notícias do bairro, tente novamente!')
+    return GlobalAlert.errorMessage('Erro!', 'Erro ao os assaltos do bairro, tente novamente!')
   }
 
   if(res.data) {
-    yield put(pushData(res.data.post)); 
-    return yield put(newsFeedLoading(false));
+    Reactotron.log('111')
+    yield put(setAssaltos(res.data.post))
+    Reactotron.log('222')
   }
-  //yield put(addPage());
+ } catch(e) {
+    Reactotron.log('houve um erro', e)
+    GlobalAlert.errorMessage('Ops!', 'Ocorreu um erro desconhecido ao trazer os assaltos!')
+ } finally {
+    yield put(newsAssaltoLoading(false))
+ }
 }
 
 export function* newsSaga() {
-  yield takeLatest(FETCH_NEWS, _fetchNews);
+  yield all([
+    takeLatest(FETCH_NEWS, _fetchNews),
+    takeLatest(FETCH_ASSALTOS, _fetchAssaltos)
+  ]);
 }

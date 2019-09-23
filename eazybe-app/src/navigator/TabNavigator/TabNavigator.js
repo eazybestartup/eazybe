@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements';
 import BottomNavigation, {
   FullTab
@@ -8,9 +8,15 @@ import { withNavigation } from 'react-navigation';
 import { connect } from 'react-redux';
 import Reactotron from 'reactotron-react-native';
 import { changeMenuTabMenuBottom } from '../../state/menu/menu.actions'
-import colors from '../../ui/colors/colors.enum';
 import { NoticiasConnected } from '../../ui/screens/Noticias'
+import { TutorAreaConnected } from '../../ui/screens/TutorArea'
 import User from '../../ui/screens/User';
+
+const styles = StyleSheet.create({
+  flex1: {
+    flex:1 
+  }
+})
 
 class TabNavigator extends React.Component {
   constructor(props) {
@@ -23,7 +29,6 @@ class TabNavigator extends React.Component {
   )
 
   renderTab = ({ tab, isActive }) => {
-    const { menu } = this.props;
     return (
       <FullTab
         isActive={isActive}
@@ -46,6 +51,8 @@ class TabNavigator extends React.Component {
         return <NoticiasConnected />
       case 1:
         return <User />
+      case 2:
+        return <TutorAreaConnected />
       default:
         return <NoticiasConnected />
     }
@@ -53,8 +60,8 @@ class TabNavigator extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <View style={{ flex: 1 }}>
+      <View style={styles.flex1}>
+        <View style={styles.flex1}>
           {this.defineScreen()}
         </View>
         <BottomNavigation

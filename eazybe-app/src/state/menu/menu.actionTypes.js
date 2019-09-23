@@ -1,8 +1,7 @@
-/*
-  Tipos de actions que podemos disparar. É só criar uma constante, atribuir em uma string e exportar.
-*/
-
-const CHANGE_TAB_MENU_BOTTOM = 'CHANGE_TAB_MENU_BOTTOM';
+const prefix = 'BOTTOM_MENU'
+const CHANGE_TAB_MENU_BOTTOM = `${prefix}.CHANGE_TAB_MENU_BOTTOM`;
+const USER_IS_TUTOR = `${prefix}.USER_IS_TUTOR`
 export {
   CHANGE_TAB_MENU_BOTTOM,
+  USER_IS_TUTOR
 };

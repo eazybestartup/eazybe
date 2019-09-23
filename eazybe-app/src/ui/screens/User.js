@@ -8,7 +8,7 @@ import { Button } from 'native-base';
 import getText from '../../enums/dictionary/dictionary'
 
 const styles = {
-  flex1: { flex: 1, backgroundColor: colors.bgContent },
+  flex1: { flex: 1 },
   flex4: { flex: 4 },
   flex6: { flex: 6 }
 }

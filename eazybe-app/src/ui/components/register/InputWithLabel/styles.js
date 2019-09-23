@@ -9,7 +9,8 @@ export const styles = StyleSheet.create({
   },
   lblInput: { 
     marginBottom: 10,
-    color: colors.white
+    color: colors.white,
+    fontFamily: 'Comfortaa'
   },
   input: {
     color: colors.purpleBackground,
@@ -17,6 +18,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.white,
     fontSize: 14,
     width: '100%',
+    fontFamily: 'Comfortaa'
   },
   iptDisabled: { 
     color: colors.white,
@@ -24,6 +26,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.iptDisabled,
     width: '100%',
     fontSize: 14,
+    fontFamily: 'Comfortaa'
   },
   shadow: {
     shadowColor: colors.black,
